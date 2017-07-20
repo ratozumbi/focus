@@ -49,8 +49,8 @@ public class Bounce : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDo
 	}
 	public virtual void OnPointerUp(PointerEventData ped){
 
-		float y = GameObject.Find ("bixoFocus").transform.position.y;
-		if (y < 300 && touch1 == true) {
+		float y = GameObject.Find ("bixoFocus").transform.localPosition.y;
+		if (y < -900 && touch1 == true) {
 			bixo.enabled = false;
 			touch1 = false;
 

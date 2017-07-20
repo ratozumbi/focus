@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Barra : MonoBehaviour {
+public class BarraEquilibrio : MonoBehaviour {
 	public Slider slide;
 	//public UnityEngine.UI.Text txt;
 	//public UnityEngine.UI.Dropdown dd;
@@ -25,7 +25,7 @@ public class Barra : MonoBehaviour {
 			count = 0;
 		}
 
-		medio[count] = Input.acceleration.x;
+		medio[count] = Input.acceleration.x/2;
 		count++;
 	}
 
