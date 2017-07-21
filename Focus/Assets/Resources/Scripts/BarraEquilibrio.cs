@@ -25,7 +25,7 @@ public class BarraEquilibrio : MonoBehaviour {
 			count = 0;
 		}
 
-		medio[count] = Input.acceleration.x/2;
+		medio[count] = Input.acceleration.x;
 		count++;
 	}
 
@@ -34,10 +34,8 @@ public class BarraEquilibrio : MonoBehaviour {
 		for (int i = 0; i < 12; i++) {
 			val += medio [i];
 		}
-//		if (int.Parse (dd.captionText.text) > 0) {
-//			val = val / int.Parse (dd.captionText.text);
-//		}
-//		txt.text = "val = " + val;
+		val = val / 12;
+
 		slide.value = val + 0.5f;
 	}
 }

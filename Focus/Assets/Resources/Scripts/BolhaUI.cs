@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Bolha : MonoBehaviour, IPointerDownHandler
+public class BolhaUI : MonoBehaviour, IPointerDownHandler
 {
 
 	private float born;

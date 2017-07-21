@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UI;
 
 public class FundoWebC : MonoBehaviour
 {
@@ -7,28 +9,18 @@ public class FundoWebC : MonoBehaviour
 	public Texture fundoOriginal;
 
 
-	private WebCamDevice webDevice;
-	private WebCamTexture webTexture;
+	private RawImage raw;
 
 	// Use this for initialization
 	void Start ()
-	{		
-		WebCamDevice[] devices = WebCamTexture.devices;
-		if(devices.Length != 0){
-//			for (int i = 0; i < devices.Length; i++)
-//			{
-//				if (devices [i].isFrontFacing) {
-//					webDevice = devices [i];
-//					webTexture = new WebCamTexture (devices [i].name,1000,1000);
-//					webTexture.Play ();
-//					break;
-//				}
-//			}
-//
-			webTexture = new WebCamTexture ();
-			webTexture.Play ();
+	{		        
+		raw = GetComponent<RawImage> ();
+		WebCamTexture webcamTexture = new WebCamTexture();
 
-			this.GetComponent<SpriteRenderer> ().material.mainTexture = webTexture;
+		if (WebCamTexture.devices.Length > 0 && raw !=null) {
+			raw.texture = webcamTexture;
+			//raw.material.mainTexture = webcamTexture;
+			webcamTexture.Play ();
 		}
 	}
 

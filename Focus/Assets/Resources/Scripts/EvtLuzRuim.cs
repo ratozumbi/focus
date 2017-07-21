@@ -1,0 +1,86 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class EvtLuzRuim : MonoBehaviour {
+
+
+	private GameObject player;
+	public float timeWait = 1f;
+
+
+	private int luzCnt = 0;
+	private float lastVibra = 0;
+	// Use this for initialization
+	void Start () {
+
+		player = GameObject.Find ("Player");
+		GetComponent<SpriteRenderer> ().enabled = false;
+	}
+
+	// Update is called once per frame
+	void Update () {
+		if (Time.realtimeSinceStartup - lastVibra > timeWait) {
+			lastVibra = Time.realtimeSinceStartup;
+
+			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+				Vector2 pos = player.transform.position;
+				Vector2 circ;
+				circ = Random.insideUnitCircle;
+				pos = pos + circ;
+				GameObject brilho1 =  CriaLuz ();
+				Destroy (brilho1, 0.5f);
+				circ = Random.insideUnitCircle;
+				pos = pos + circ;
+				GameObject brilho2 =  CriaLuz ();
+				Destroy (brilho2, 0.5f);
+				circ = Random.insideUnitCircle;
+				pos = pos + circ;
+				GameObject brilho3 =  CriaLuz (); 
+				Destroy (brilho3, 0.5f);
+				GetComponent<SpriteRenderer> ().enabled = true;
+			} else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
+				Vector2 pos = player.transform.position;
+				Vector2 circ;
+				circ = Random.insideUnitCircle;
+				pos = pos + circ;
+				GameObject brilho1 =  CriaLuz ();
+				Destroy (brilho1, 0.3f);
+				circ = Random.insideUnitCircle;
+				pos = pos + circ;
+				GameObject brilho2 = CriaLuz ();
+				Destroy (brilho2, 0.3f);
+				GetComponent<SpriteRenderer> ().enabled = false;
+			} else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
+				Vector2 pos = player.transform.position;
+				Vector2 circ;
+				circ = Random.insideUnitCircle;
+				pos = pos + circ;
+				GameObject brilho1 = CriaLuz ();
+				Destroy (brilho1, 0.1f);
+				GetComponent<SpriteRenderer> ().enabled = false;
+			}
+		}
+
+	}
+
+	GameObject CriaLuz(){
+		string brilhoBom = "brilhoBom";
+		string brilhoRuim = "brilhoRuim";
+		string brilho = "brilhoBom";
+
+		luzCnt++;
+		if (luzCnt == 3) {
+			brilho = brilhoRuim;
+			luzCnt = 0;
+		} else {
+			brilho = brilhoBom;
+		}
+
+		Vector2 pos = player.transform.position;
+		Vector2 circ;
+		circ = Random.insideUnitCircle;
+		pos = pos + circ;
+
+		return Instantiate(Resources.Load(brilho),pos, player.transform.rotation) as GameObject;
+	}
+}

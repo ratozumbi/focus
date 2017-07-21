@@ -46,7 +46,7 @@ public class GameControler : MonoBehaviour {
 		circ.x = circ.x*600;
 		circ.y = circ.y * 1200;
 		pos = pos + circ;
-		GameObject bolha = Instantiate(Resources.Load("bolha"),pos, transform.rotation, GameObject.Find("Canvas").transform) as GameObject;
+		GameObject bolha = Instantiate(Resources.Load("bolhaUI"),pos, transform.rotation, GameObject.Find("Canvas").transform) as GameObject;
 		
 	}
 }

@@ -9,18 +9,26 @@ public class Bounce : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDo
 	private Image chess;
 	private Vector3 inputVector;
 
+	private bool reflectX = false;
+	private bool reflectY = false;
 
 
-	private bool touch1 = false;
+
+	private bool touch1time = false;
 
 
-	public float maxX = 1000;
-	public float maxY = 1000;
+	public float maxX = 700;
+	public float maxY = 1100;
 
-	public Vector2 velocity = new Vector2(1,1);
+	public float speed = 1000f;
+
+	private bool canMove = true;
+	private Vector2 velocity = new Vector2(1,1);
 
 	// Use this for initialization
 	void Start () {
+
+		velocity *= speed;
 
 		bixo = GameObject.Find ("bixoFocus").GetComponent<Image>();
 		chess = GameObject.Find ("chess").GetComponent<Image>();
@@ -29,35 +37,33 @@ public class Bounce : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDo
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (velocity * Time.deltaTime);
-		if (transform.position.x >= maxX || transform.position.x <= maxX) {
-			velocity = Vector2.Reflect (velocity, new Vector2 (1, 0));
-			velocity *= 0.8f;
-		}
-		if (transform.position.y >= maxY || transform.position.y <= maxY) {
-			velocity = Vector2.Reflect (velocity, new Vector2 (0, 1));
-			velocity *= 0.8f;
-		}
+
+		if (canMove)
+			move ();
+		
 	}
 	public virtual void OnPointerDown(PointerEventData ped){
-		OnDrag (ped);
+		//OnDrag (ped);
+		canMove = false;
 		Vibration.Vibrate (50);
-		if (touch1 == false) {
+		if (touch1time == false) {
 			chess.transform.SetSiblingIndex (chess.transform.GetSiblingIndex () - 1);
 		}
-		touch1 = true;
+		touch1time = true;
 	}
 	public virtual void OnPointerUp(PointerEventData ped){
+		canMove = true;
+		velocity = Vector2.Reflect (velocity.normalized * speed, velocity.normalized);
 
 		float y = GameObject.Find ("bixoFocus").transform.localPosition.y;
-		if (y < -900 && touch1 == true) {
+		if (y < -900 && touch1time == true) {
 			bixo.enabled = false;
-			touch1 = false;
+			touch1time = false;
 
 			GameObject.Find ("HandleEQ").GetComponent<Image>().enabled = true;
 			chess.transform.SetSiblingIndex (chess.transform.GetSiblingIndex () - 1);
 
-			//Destroy (GameObject.Find ("bixoFocus"));
+			//Destroy (this.gameObject);
 		}
 	
 	}
@@ -77,5 +83,40 @@ public class Bounce : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDo
 			bixo.rectTransform.anchoredPosition = new Vector3 (inputVector.x * chess.rectTransform.sizeDelta.x , inputVector.z * chess.rectTransform.sizeDelta.y );
 
 		}
+	}
+
+	public void OnPointerClick( PointerEventData eventData )
+	{
+		Debug.Log( "Clicked!" );
+	}
+
+	void move(){
+
+		transform.Translate (velocity * Time.deltaTime);
+
+		if (transform.localPosition.x >= maxX || transform.localPosition.x <= (maxX * -1)) {
+
+			if (!reflectX) {
+				velocity = Vector2.Reflect (velocity.normalized * speed, new Vector2 (1, 0));
+				reflectX = true;
+			}
+
+		} else {
+			reflectX = false;
+		}
+
+		if (transform.localPosition.y >= maxY || transform.localPosition.y <= (maxY*-1)) {
+			
+			if (!reflectY) {
+				reflectY = true;
+				velocity = Vector2.Reflect (velocity.normalized * speed, new Vector2 (0, 1));
+			}
+
+		} else {
+			reflectY = false;
+		}
+
+
+
 	}
 }
