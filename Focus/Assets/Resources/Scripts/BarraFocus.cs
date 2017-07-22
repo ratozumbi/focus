@@ -28,7 +28,7 @@ public class BarraFocus : MonoBehaviour
 
 	private void setMasks(){
 
-		Image cImg = chess.GetComponent<Image> ();
+        RawImage cImg = chess.GetComponent<RawImage> ();
 		Image mImg = mask.GetComponent<Image> ();
 
 		float alpha;
