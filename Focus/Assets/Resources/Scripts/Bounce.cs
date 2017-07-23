@@ -67,7 +67,6 @@ public class Bounce : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDo
         GameObject barra = GameObject.Find("qtdFoco");
         GameObject bixoObj = GameObject.Find ("bixoFocus");
         float dist = Vector2.Distance(barra.transform.position, bixoObj.transform.position);
-        Debug.Log(dist);
 
         if (dist < 1 && touch1time == true) {
 			bixoImage.enabled = false;

@@ -8,6 +8,8 @@ public class GameControler : MonoBehaviour {
 	private GameObject chess;
 	private BarraFocus barraFocus;
 	private BarraEquilibrio barraEquilibrio;
+    private Canvas canvas;
+    private Camera camera;
 
 	public float timeWaitSpaw = 1f;
 	public float timeLastSpaw = 0f;
@@ -18,7 +20,12 @@ public class GameControler : MonoBehaviour {
 		chess = GameObject.Find ("chess");
 		barraFocus = GameObject.Find ("qtdFoco").GetComponent<BarraFocus> ();
 		barraEquilibrio = GameObject.Find ("equilibrio").GetComponent<BarraEquilibrio> ();
-	}
+
+
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,13 +47,14 @@ public class GameControler : MonoBehaviour {
 
 	void spawBolha(){
 		
-		Vector2 pos = GameObject.Find("Canvas").transform.position;
-		Vector2 circ;
-		circ = Random.insideUnitCircle;
-		circ.x = circ.x*600;
-		circ.y = circ.y * 1200;
-		pos = pos + circ;
-		GameObject bolha = Instantiate(Resources.Load("bolhaUI"),pos, transform.rotation, GameObject.Find("Canvas").transform) as GameObject;
+		Vector2 pos;
 		
-	}
+        pos.x = Random.Range(-(camera.pixelWidth / canvas.scaleFactor), camera.pixelWidth / canvas.scaleFactor);
+        pos.y = Random.Range(-(camera.pixelHeight / canvas.scaleFactor), camera.pixelHeight / canvas.scaleFactor);
+        pos = pos - (pos / 2);
+
+        GameObject bolha = Instantiate(Resources.Load("bolhaUI"),pos, transform.rotation, canvas.transform) as GameObject;
+        bolha.transform.localPosition = pos;
+
+    }
 }
