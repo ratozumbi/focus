@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.78.0 commit date:2017-02-24, commit time:14:33, hash:e92f235283</authoring_tool>
+    </contributor>
+    <created>2017-07-28T04:15:20</created>
+    <modified>2017-07-28T04:15:20</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects>
+    <effect id="Material-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.64 0.5195981 0 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 0</color>
+            </transparent>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="Material-material" name="Material">
+      <instance_effect url="#Material-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="spot_mesh-mesh" name="spot_mesh">
+      <mesh>
+        <source id="spot_mesh-mesh-positions">
+          <float_array id="spot_mesh-mesh-positions-array" count="9">-1 -1 0 1 -1 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#spot_mesh-mesh-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="spot_mesh-mesh-normals">
+          <float_array id="spot_mesh-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#spot_mesh-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="spot_mesh-mesh-map-0">
+          <float_array id="spot_mesh-mesh-map-0-array" count="6">0 0 1 0 0.5000001 1</float_array>
+          <technique_common>
+            <accessor source="#spot_mesh-mesh-map-0-array" count="3" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="spot_mesh-mesh-vertices">
+          <input semantic="POSITION" source="#spot_mesh-mesh-positions"/>
+        </vertices>
+        <polylist material="Material-material" count="1">
+          <input semantic="VERTEX" source="#spot_mesh-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#spot_mesh-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#spot_mesh-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 </vcount>
+          <p>0 0 0 1 0 1 2 0 2</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="spot_spot_mesh-skin" name="spot">
+      <skin source="#spot_mesh-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="spot_spot_mesh-skin-joints">
+          <Name_array id="spot_spot_mesh-skin-joints-array" count="3">topo base_R base_L</Name_array>
+          <technique_common>
+            <accessor source="#spot_spot_mesh-skin-joints-array" count="3" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="spot_spot_mesh-skin-bind_poses">
+          <float_array id="spot_spot_mesh-skin-bind_poses-array" count="48">1 0 0 0 0 0 1 0 0 -1 0 1 0 0 0 1 1 0 0 -1 0 0 1 0 0 -1 0 -1 0 0 0 1 1 0 0 1 0 0 1 0 0 -1 0 -1 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#spot_spot_mesh-skin-bind_poses-array" count="3" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="spot_spot_mesh-skin-weights">
+          <float_array id="spot_spot_mesh-skin-weights-array" count="3">1 1 1</float_array>
+          <technique_common>
+            <accessor source="#spot_spot_mesh-skin-weights-array" count="3" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#spot_spot_mesh-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#spot_spot_mesh-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="3">
+          <input semantic="JOINT" source="#spot_spot_mesh-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#spot_spot_mesh-skin-weights" offset="1"/>
+          <vcount>1 1 1 </vcount>
+          <v>2 0 1 1 0 2</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="spot" name="spot" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="topo" name="topo" sid="topo" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 0 -1 1 0 1 0 0 0 0 0 1</matrix>
+          <extra>
+            <technique profile="blender">
+              <layer>0</layer>
+              <tip_x>0</tip_x>
+              <tip_y>0</tip_y>
+              <tip_z>1</tip_z>
+            </technique>
+          </extra>
+        </node>
+        <node id="base_R_001" name="base.R.001" sid="base_R_001" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 0 -1 -1 0 1 0 0 0 0 0 1</matrix>
+          <node id="base_R" name="base.R" sid="base_R" type="JOINT">
+            <matrix sid="transform">1 0 0 1 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <extra>
+              <technique profile="blender">
+                <layer>0</layer>
+                <tip_x>0</tip_x>
+                <tip_y>0</tip_y>
+                <tip_z>1</tip_z>
+              </technique>
+            </extra>
+          </node>
+          <node id="base_L" name="base.L" sid="base_L" type="JOINT">
+            <matrix sid="transform">1 0 0 -1 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <extra>
+              <technique profile="blender">
+                <layer>0</layer>
+                <tip_x>0</tip_x>
+                <tip_y>0</tip_y>
+                <tip_z>1</tip_z>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="blender">
+              <layer>0</layer>
+              <tip_x>0</tip_x>
+              <tip_y>0</tip_y>
+              <tip_z>1</tip_z>
+            </technique>
+          </extra>
+        </node>
+      </node>
+      <node id="spot_mesh" name="spot_mesh" type="NODE">
+        <translate sid="location">0 0 0</translate>
+        <rotate sid="rotationZ">0 0 1 0</rotate>
+        <rotate sid="rotationY">0 1 0 0</rotate>
+        <rotate sid="rotationX">1 0 0 0</rotate>
+        <scale sid="scale">1 1 1</scale>
+        <instance_controller url="#spot_spot_mesh-skin">
+          <skeleton>#topo</skeleton>
+          <skeleton>#base_R_001</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material-material" target="#Material-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
