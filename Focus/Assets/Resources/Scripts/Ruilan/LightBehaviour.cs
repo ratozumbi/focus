@@ -11,19 +11,39 @@ public class LightBehaviour : MonoBehaviour {
     [Space]
     [SerializeField] private Transform baseLight;
     [SerializeField] private Transform topLight;
+
+    private float scaleLightInit;
+
+    public int Score { get; private set; }
+
+    public void AddPointer()
+    {
+        Score++;
+
+        SizeLight();
+    }
     
 	// Use this for initialization
 	void Start () {
-        //InvokeRepeating("UpdatePosition", 2, 0.1f);
-	}
+        scaleLightInit = baseLight.localScale.x;
+    }
 	
     private void Update()
+    {
+        Move();
+    }
+
+    private void Move()
     {
         if (focusPosition && playerPosition && baseLight && topLight)
         {
             baseLight.position = new Vector3(playerPosition.position.x, baseLight.position.y);
             topLight.position = new Vector3(focusPosition.position.x, topLight.position.y);
-
         }
+    }
+
+    private void SizeLight()
+    {
+        baseLight.localScale = new Vector3(scaleLightInit + Score, baseLight.localScale.y);
     }
 }
