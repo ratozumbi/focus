@@ -10,12 +10,10 @@ public class FundoWebC : MonoBehaviour
     private WebCamTexture backCam;
     private Texture defaultBackground;
 
-    [SerializeField] private RawImage background;
-    [SerializeField] private AspectRatioFitter fit;
+    [SerializeField] private MeshRenderer background;
 
     private void Start()
     {
-        defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
 
         if (devices.Length == 0)
@@ -39,8 +37,9 @@ public class FundoWebC : MonoBehaviour
             return;
         }
 
+        background.material.mainTexture = backCam;
+
         backCam.Play();
-        background.texture = backCam;
 
         camAvailable = true;
     }
@@ -51,16 +50,6 @@ public class FundoWebC : MonoBehaviour
         {
             return;
         }
-
-        float ratio = (float)backCam.width / (float)backCam.height;
-        fit.aspectRatio = ratio;
-
-        float scaley = backCam.videoVerticallyMirrored ? -1f : 1f;
-        background.rectTransform.localScale = new Vector3(1f, scaley, 1f);
-
-        int orient = -backCam.videoRotationAngle;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
-
 
     }
 }

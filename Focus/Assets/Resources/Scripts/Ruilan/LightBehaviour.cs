@@ -37,8 +37,8 @@ public class LightBehaviour : MonoBehaviour {
     {
         if (focusPosition && playerPosition && baseLight && topLight)
         {
-            baseLight.position = new Vector3(playerPosition.position.x, baseLight.position.y);
-            topLight.position = new Vector3(focusPosition.position.x, topLight.position.y);
+            baseLight.position = new Vector3(playerPosition.position.x, playerPosition.position.y -20);
+            topLight.position = new Vector3(focusPosition.position.x, focusPosition.position.y);
         }
     }
 
