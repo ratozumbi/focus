@@ -5,9 +5,14 @@ using System.Collections;
 
 public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler {
 
-	[SerializeField] private Image bgImg;
-    [SerializeField] private Image joyImg;
+	private Image bgImg;
+	private Image joyImg;
 	private Vector3 inputVector;
+
+	private void Start (){
+		bgImg = GetComponent<Image> ();
+		joyImg = transform.GetChild (0).GetComponent<Image> ();
+	}
 		
 	public float Horizontal(){
 		if (inputVector.x != 0) {
