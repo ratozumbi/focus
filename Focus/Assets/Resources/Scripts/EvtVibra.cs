@@ -23,13 +23,19 @@ public class EvtVibra : MonoBehaviour {
 			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
 				Vibration.Vibrate (500);
 				GetComponent<SpriteRenderer> ().enabled = true;
-			} else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
+                SpawnOne spawn = GetComponent<SpawnOne>();
+                spawn.enabled = true;
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
 				Vibration.Vibrate (200);
 				GetComponent<SpriteRenderer> ().enabled = false;
-			} else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
+                SpawnOne spawn = GetComponent<SpawnOne>();
+                spawn.enabled = false;
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
 				Vibration.Vibrate (50);
 				GetComponent<SpriteRenderer> ().enabled = false;
-			}
+                SpawnOne spawn = GetComponent<SpawnOne>();
+                spawn.enabled = false;
+            }
 		}
 	
 	}

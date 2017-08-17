@@ -15,6 +15,7 @@ public class Particle : MonoBehaviour {
 
     public virtual void ReactionColisionParticle()
     {
+        ScoreManager.AddPointer();
         Debug.Log("Colision " + gameObject.name);
     }
 }
