@@ -14,6 +14,8 @@ public class FosforoFocus : MonoBehaviour {
     [SerializeField] private Sprite sprFocus;
     [SerializeField] private Sprite redPillar;
 
+    [SerializeField] private GameObject buttonPlay;
+
     private void Update()
     {
         if (posBallYellow.value > (posFocusTrigger - 0.01) && posBallYellow.value < posFocusTrigger + 0.01)
@@ -23,6 +25,7 @@ public class FosforoFocus : MonoBehaviour {
                 imgSlideFocus.sprite = sprFocus;
                 imgSlideFocus.transform.localScale = new Vector3(4, 8);
                 imgFocus.enabled = false;
+                buttonPlay.SetActive(true);
                 this.enabled = false;
             }
         }

@@ -6,7 +6,6 @@ public class GameControler : MonoBehaviour {
 
 	private GameObject bixoFocus;
 	private GameObject chess;
-	private BarraFocus barraFocus;
 	private BarraEquilibrio barraEquilibrio;
     private Canvas canvas;
     private Camera camera;
@@ -16,9 +15,7 @@ public class GameControler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bixoFocus = GameObject.Find ("bixoFocus") as GameObject;
 		chess = GameObject.Find ("chess");
-		barraFocus = GameObject.Find ("qtdFoco").GetComponent<BarraFocus> ();
 		barraEquilibrio = GameObject.Find ("equilibrio").GetComponent<BarraEquilibrio> ();
 
 
@@ -29,20 +26,14 @@ public class GameControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-		if (bixoFocus.GetComponent<Image>().enabled == false) {
+	    barraEquilibrio = GameObject.Find ("equilibrio").GetComponent<BarraEquilibrio> ();
 
-			barraEquilibrio = GameObject.Find ("equilibrio").GetComponent<BarraEquilibrio> ();
-
-			if(barraEquilibrio.slide.value >0.4f && barraEquilibrio.slide.value <0.6f && barraFocus.slide.value <5.0f){ 
-				if (Time.realtimeSinceStartup - timeLastSpaw > timeWaitSpaw) {
-					timeLastSpaw = Time.realtimeSinceStartup;
-					spawBolha ();
-				}
-			}
-
-		}
-
+	    if(barraEquilibrio.slide.value >0.4f && barraEquilibrio.slide.value <0.6f && ScoreManager.Score < 5.0f){ 
+		    if (Time.realtimeSinceStartup - timeLastSpaw > timeWaitSpaw) {
+			    timeLastSpaw = Time.realtimeSinceStartup;
+			    spawBolha ();
+		    }
+	    }
 	}
 
 	void spawBolha(){

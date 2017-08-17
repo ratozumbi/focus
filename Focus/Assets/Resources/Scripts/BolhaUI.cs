@@ -20,18 +20,15 @@ public class BolhaUI : MonoBehaviour, IPointerDownHandler
 	void Update ()
 	{
 		if (Time.realtimeSinceStartup - born > lifeTime) {
-			
-			BarraFocus bf = GameObject.Find ("qtdFoco").GetComponent<BarraFocus> ();
-			bf.addValue (0.33f);
 			Destroy (this.gameObject);		
 		}
 	
 	}
 
 	public virtual void OnPointerDown(PointerEventData ped){
-		BarraFocus bf = GameObject.Find ("qtdFoco").GetComponent<BarraFocus> ();
-		bf.addValue (0.33f);
-		Destroy (this.gameObject);		
+        ScoreManager.AddPointer();
+        Debug.Log(ScoreManager.Score);
+        Destroy (this.gameObject);		
 	}
 
 }
