@@ -9,6 +9,7 @@ public class FosforoFocus : MonoBehaviour {
     [SerializeField] float posFocusTrigger = 0.266f;
 
     [SerializeField] private Image imgFocus;
+    [SerializeField] private Image imgSlideFocus;
 
     [SerializeField] private Sprite sprFocus;
     [SerializeField] private Sprite redPillar;
@@ -19,7 +20,10 @@ public class FosforoFocus : MonoBehaviour {
         {
             if (imgFocus.sprite == redPillar)
             {
-                imgFocus.sprite = sprFocus;
+                imgSlideFocus.sprite = sprFocus;
+                imgSlideFocus.transform.localScale = new Vector3(4, 8);
+                imgFocus.enabled = false;
+                this.enabled = false;
             }
         }
     }
