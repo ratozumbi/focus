@@ -37,6 +37,18 @@ public class BolhaUI : MonoBehaviour, IPointerDownHandler
         background.materials[0].color = color;
 
         Debug.Log(ScoreManager.Score);
+        if (ScoreManager.Score > 1.0f)
+        {
+            GameControler controller = GameObject.FindObjectOfType<GameControler>();
+            controller.enabled = false;
+            background.gameObject.SetActive(false);
+
+            GameObject joyBreath = GameObject.FindObjectOfType<JoyBreath>().gameObject;
+            joyBreath.SetActive(false);
+
+            GameObject joyStick = GameObject.Find("Canvas").GetComponentInChildren<VirtualJoystick>(true).gameObject;
+            joyStick.SetActive(true);
+        }
         Destroy (this.gameObject);		
 	}
 
