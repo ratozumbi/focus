@@ -6,28 +6,51 @@ using UnityEngine.UI;
 public class FundoWeb2D : MonoBehaviour
 {
 
-	public Texture fundoOriginal;
+    private bool camAvailable;
+    private WebCamTexture backCam;
+    private Texture defaultBackground;
 
+    [SerializeField] private MeshRenderer background;
 
-	private SpriteRenderer sprite;
+    private void Start()
+    {
+        WebCamDevice[] devices = WebCamTexture.devices;
 
-	// Use this for initialization
-	void Start ()
-	{		        
-		sprite = GetComponent<SpriteRenderer> ();
-		WebCamTexture webcamTexture = new WebCamTexture();
-
-		if (WebCamTexture.devices.Length > 0 && sprite !=null) {
-			webcamTexture.Play ();
-            sprite.sprite = Sprite.Create(webcamTexture.GetPixels(), transform, Vector2.zero);
+        if (devices.Length == 0)
+        {
+            Debug.Log("No camera detected");
+            camAvailable = false;
+            return;
         }
-	}
 
-	
-	// Update is called once per frame
-	void Update ()
-	{
+        for (int i = 0; i < devices.Length; i++)
+        {
+            if (!devices[i].isFrontFacing)
+            {
+                backCam = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
+            }
+        }
 
-	}
+        if (backCam == null)
+        {
+            Debug.Log("Unable to find back camera");
+            return;
+        }
+
+        background.material.mainTexture = backCam;
+
+        backCam.Play();
+
+        camAvailable = true;
+    }
+
+    private void Update()
+    {
+        if (!camAvailable)
+        {
+            return;
+        }
+
+    }
 }
 

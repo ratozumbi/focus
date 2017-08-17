@@ -27,9 +27,12 @@ public class Fosforo : MonoBehaviour
 
     private GameObject barraEQ;
     private Slider slider;
+
+    TriggerFocus focus;
     // Use this for initialization
     void Start()
     {
+        focus = GameObject.FindObjectOfType<TriggerFocus>();
 
         myLetra = transform.Find("letra").gameObject;
         mySpark = transform.Find("letra/spark").gameObject;
@@ -69,7 +72,9 @@ public class Fosforo : MonoBehaviour
                     imgLetra.enabled = true;
                     myImg.enabled = false;
 
+                    focus.ActiveFocus();
                 }
+
             }
         }
         else
@@ -77,6 +82,5 @@ public class Fosforo : MonoBehaviour
             slideActive = false;
             //mySpark.SetActive(false);
         }
-
     }
 }
