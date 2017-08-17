@@ -12,11 +12,14 @@ public class LightBehaviour : MonoBehaviour {
     [SerializeField] private Transform baseLight;
     [SerializeField] private Transform topLight;
 
+    [Space]
+    [SerializeField] private Transform light;
+
     private float scaleLightInit;
     
 	// Use this for initialization
 	void Start () {
-        scaleLightInit = 0;
+        scaleLightInit = light.localScale.x;
     }
 	
     private void Update()
@@ -32,6 +35,6 @@ public class LightBehaviour : MonoBehaviour {
 
     public void SizeLight()
     {
-        baseLight.localScale = new Vector3(scaleLightInit + ScoreManager.Score, baseLight.localScale.y);
+        light.localScale = new Vector3(scaleLightInit + ScoreManager.Score, light.localScale.y, light.localScale.z);
     }
 }
