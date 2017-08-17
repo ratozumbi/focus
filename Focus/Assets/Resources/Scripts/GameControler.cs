@@ -22,7 +22,7 @@ public class GameControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(ScoreManager.Score < 5.0f){ 
+	    if(ScoreManager.Score != 1.0f){ 
 		    if (Time.realtimeSinceStartup - timeLastSpaw > timeWaitSpaw) {
 			    timeLastSpaw = Time.realtimeSinceStartup;
 			    spawBolha ();
