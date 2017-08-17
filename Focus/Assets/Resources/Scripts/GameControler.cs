@@ -5,7 +5,7 @@ using System.Collections;
 public class GameControler : MonoBehaviour {
 
 	private GameObject bixoFocus;
-	private GameObject chess;
+	private GameObject BAck;
 	private BarraEquilibrio barraEquilibrio;
     private Canvas canvas;
     private Camera camera;
@@ -15,10 +15,6 @@ public class GameControler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		chess = GameObject.Find ("chess");
-		barraEquilibrio = GameObject.Find ("equilibrio").GetComponent<BarraEquilibrio> ();
-
-
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
@@ -26,14 +22,16 @@ public class GameControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    barraEquilibrio = GameObject.Find ("equilibrio").GetComponent<BarraEquilibrio> ();
-
-	    if(barraEquilibrio.slide.value >0.4f && barraEquilibrio.slide.value <0.6f && ScoreManager.Score < 5.0f){ 
+	    if(ScoreManager.Score < 5.0f){ 
 		    if (Time.realtimeSinceStartup - timeLastSpaw > timeWaitSpaw) {
 			    timeLastSpaw = Time.realtimeSinceStartup;
 			    spawBolha ();
 		    }
 	    }
+        else
+        {
+            this.enabled = false;
+        }
 	}
 
 	void spawBolha(){

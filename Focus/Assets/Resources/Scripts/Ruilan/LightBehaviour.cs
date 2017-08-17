@@ -13,19 +13,10 @@ public class LightBehaviour : MonoBehaviour {
     [SerializeField] private Transform topLight;
 
     private float scaleLightInit;
-
-    public int Score { get; private set; }
-
-    public void AddPointer()
-    {
-        Score++;
-
-        SizeLight();
-    }
     
 	// Use this for initialization
 	void Start () {
-        scaleLightInit = baseLight.localScale.x;
+        scaleLightInit = 0;
     }
 	
     private void Update()
@@ -39,8 +30,8 @@ public class LightBehaviour : MonoBehaviour {
         topLight.position = new Vector3(focusPosition.position.x, focusPosition.position.y);
     }
 
-    private void SizeLight()
+    public void SizeLight()
     {
-        baseLight.localScale = new Vector3(scaleLightInit + Score, baseLight.localScale.y);
+        baseLight.localScale = new Vector3(scaleLightInit + ScoreManager.Score, baseLight.localScale.y);
     }
 }
