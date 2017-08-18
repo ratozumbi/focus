@@ -17,6 +17,7 @@ public class Magnetic : MonoBehaviour {
 		
 
         if(Vector2.Distance(player.position, this.transform.position) < 1.5) {
+
             Vector2 direction = this.transform.position - player.position;
             direction = direction.normalized;
             player.Translate(direction * forceGravity, Space.World);

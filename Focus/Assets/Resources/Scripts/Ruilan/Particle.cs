@@ -15,7 +15,10 @@ public class Particle : MonoBehaviour {
 
     public virtual void ReactionColisionParticle()
     {
-        ScoreManager.AddPointer();
+        if(this.gameObject.layer == 12)
+            ScoreManager.AddPointer();
+        if(this.gameObject.layer == 13)
+            ScoreManager.SubPointer();
         Debug.Log("Colision " + gameObject.name);
     }
 }

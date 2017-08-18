@@ -19,4 +19,11 @@ public class ScoreManager : MonoBehaviour {
         if(!light) light = GameObject.FindObjectOfType<LightBehaviour>();
         light.SizeLight();
     }
+
+    public static void SubPointer()
+    {
+        Score = Score - 0.1f;
+        if (!light) light = GameObject.FindObjectOfType<LightBehaviour>();
+        light.SizeLight();
+    }
 }
