@@ -24,11 +24,17 @@ public class EvtSom : MonoBehaviour {
 
 			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
 				GetComponent<SpriteRenderer> ().enabled = true;
-			} else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
+                SpawnOne spawn = GetComponent<SpawnOne>();
+                spawn.enabled = true;
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
 				GetComponent<SpriteRenderer> ().enabled = false;
-			} else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
+                SpawnOne spawn = GetComponent<SpawnOne>();
+                spawn.enabled = false;
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
 				GetComponent<SpriteRenderer> ().enabled = false;
-			}
+                SpawnOne spawn = GetComponent<SpawnOne>();
+                spawn.enabled = false;
+            }
 		}
 
 	}
