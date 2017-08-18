@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FundoWebC : MonoBehaviour
 {
 
+
     private bool camAvailable;
     private WebCamTexture backCam;
     private Texture defaultBackground;
