@@ -1,9 +1,9 @@
-Focus/Library/
-Focus/Temp/
-Focus/Obj/
-Focus/Build/
-Focus/Builds/
-Focus/Assets/AssetStoreTools*
+Focus/[Ll]ibrary/
+Focus/[Tt]emp/
+Focus/[Oo]bj/
+Focus/[Bb]uild/
+Focus/[Bb]uilds/
+Focus/Assets/[Aa]ssetStoreTools*
 
 # Visual Studio 2015 cache directory
 Focus/.vs/
@@ -27,7 +27,7 @@ Focus/.consulo/
 *.pidb.meta
 
 # Unity3D Generated File On Crash Reports
-sysinfo.txt
+Focus/sysinfo.txt
 
 # Builds
 *.apk

@@ -16,7 +16,7 @@ public class GameControler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        camera = GameObject.Find("Camera0").GetComponent<Camera>();
 
     }
 	

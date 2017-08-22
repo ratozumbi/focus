@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class LightBehaviour : MonoBehaviour {
 
-    [SerializeField] private Transform focusPosition;
-    [SerializeField] private Transform playerPosition;
+	[SerializeField] private Transform focusPosition;
+	[SerializeField] private Transform playerPosition;
+
+	[SerializeField] private Camera camera0;
 
     [Space]
     [SerializeField] private Transform baseLight;
@@ -30,7 +32,9 @@ public class LightBehaviour : MonoBehaviour {
     private void Move()
     {
         baseLight.position = new Vector3(playerPosition.position.x, playerPosition.position.y - 0.8f);
-        topLight.position = new Vector3(focusPosition.position.x, focusPosition.position.y);
+		Vector3 screen = camera0.WorldToScreenPoint(new Vector3(focusPosition.position.x, focusPosition.position.y));
+		//topLight.position = new Vector3(focusPosition.transform.position.x, focusPosition.transform.position.y);
+		topLight.position = new Vector3((focusPosition.transform.position.x*2 - (camera0.pixelWidth))/ 100, focusPosition.transform.position.y /80);
     }
 
     public void SizeLight()
