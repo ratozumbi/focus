@@ -3,10 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GameControler : MonoBehaviour {
-
-	private GameObject bixoFocus;
-	private GameObject BAck;
-	private BarraEquilibrio barraEquilibrio;
+    
     private Canvas canvas;
     private Camera camera;
 

@@ -21,9 +21,8 @@ public class Fosforo : MonoBehaviour
     private bool slideActive = false;
 
     private GameObject myLetra;
-    private GameObject mySpark;
 
-    private ParticleSystem ps;
+    [SerializeField] private ParticleSystem ps;
 
     private GameObject barraEQ;
     private Slider slider;
@@ -35,7 +34,6 @@ public class Fosforo : MonoBehaviour
         focus = GameObject.FindObjectOfType<TriggerFocus>();
 
         myLetra = transform.Find("letra").gameObject;
-        mySpark = transform.Find("letra/spark").gameObject;
 
 
 
@@ -54,12 +52,10 @@ public class Fosforo : MonoBehaviour
             {
                 slideActive = true;
 
-                ParticleSystem ps = mySpark.GetComponent<ParticleSystem>();
-                ParticleSystem.EmitParams emitOverride = new ParticleSystem.EmitParams();
-                emitOverride.startLifetime = 10f;
-                ps.Emit(emitOverride, 20);
-
-                //mySpark.SetActive(true);// << melhorar isso aqui
+                //ParticleSystem.EmitParams emitOverride = new ParticleSystem.EmitParams();
+                //emitOverride.startLifetime = 1f;
+                //ps.Emit(emitOverride, 10);
+                ps.Emit(10);
 
                 slideCount++;
 
