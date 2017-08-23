@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Particle : MonoBehaviour {
 
+    [SerializeField] private float Velocity;
+
+    private void Update()
+    {
+        transform.Translate(Vector3.up * Velocity);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Focus"))
@@ -15,9 +22,9 @@ public class Particle : MonoBehaviour {
 
     public virtual void ReactionColisionParticle()
     {
-        if(this.gameObject.layer == 12)
+        if(this.gameObject.tag == "ParticleGood")
             ScoreManager.AddPointer();
-        if(this.gameObject.layer == 13)
+        if(this.gameObject.tag == "ParticleBad")
             ScoreManager.SubPointer();
         Debug.Log("Colision " + gameObject.name);
     }

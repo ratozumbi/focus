@@ -10,10 +10,39 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
     private Image joyImg;
     private Vector3 inputVector;
 
+
+    [SerializeField] private Transform pointerSpawn;
+
+    [SerializeField] private GameObject spawn;
+    private Transform[] posSpawns;
+
+    private bool lastPosBreath;
+
     private void Start()
     {
         bgImg = GetComponent<Image>();
         joyImg = transform.GetChild(0).GetComponent<Image>();
+
+        posSpawns = pointerSpawn.GetComponentsInChildren<Transform>();
+    }
+
+    private void Update()
+    {
+        if(lastPosBreath && inputVector.z < 0.8f)
+        {
+            lastPosBreath = false;
+            int posRandom = Random.Range(0, posSpawns.Length);
+            Instantiate(spawn, posSpawns[posRandom]);
+            Debug.Log("Spawn");
+        }
+        else if(!lastPosBreath && inputVector.z > 0.8f)
+        {
+            lastPosBreath = true;
+            int posRandom = Random.Range(0, posSpawns.Length);
+            Instantiate(spawn, posSpawns[posRandom]);
+            Debug.Log("Spawn");
+        }
+        
     }
 
     public float Horizontal()
@@ -24,7 +53,7 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
         }
         else
         {
-            return Input.GetAxis("Horizontal");
+            return Input.GetAxis("Vertical");
         }
     }
 
