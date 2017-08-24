@@ -14,6 +14,7 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
     [SerializeField] private Transform pointerSpawn;
 
     [SerializeField] private GameObject spawn;
+
     private Transform[] posSpawns;
 
     private bool lastPosBreath;
@@ -42,7 +43,17 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
             Instantiate(spawn, posSpawns[posRandom]);
             Debug.Log("Spawn");
         }
-        
+
+        if (ScoreManager.Score > 1.0f)
+        {
+            GameObject joyBreath = GameObject.FindObjectOfType<JoyBreath>().gameObject;
+            joyBreath.SetActive(false);
+
+            GameObject joyStick = GameObject.Find("Canvas").GetComponentInChildren<VirtualJoystick>(true).gameObject;
+            joyStick.SetActive(true);
+        }
+
+
     }
 
     public float Horizontal()

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Particle : MonoBehaviour {
 
-    [SerializeField] private float Velocity;
+    [SerializeField]
+    private float Velocity;
+    [SerializeField]
+    private float value;
 
     private void Update()
     {
@@ -23,9 +26,9 @@ public class Particle : MonoBehaviour {
     public virtual void ReactionColisionParticle()
     {
         if(this.gameObject.tag == "ParticleGood")
-            ScoreManager.AddPointer();
+            ScoreManager.AddPointer(value);
         if(this.gameObject.tag == "ParticleBad")
-            ScoreManager.SubPointer();
+            ScoreManager.SubPointer(value);
         Debug.Log("Colision " + gameObject.name);
     }
 }

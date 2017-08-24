@@ -13,16 +13,16 @@ public class ScoreManager : MonoBehaviour {
         light = GameObject.FindObjectOfType<LightBehaviour>();
     }
 
-    public static void AddPointer()
+    public static void AddPointer(float value)
     {
-        Score = Score + 0.1f;
+        Score = Score + value;
         if(!light) light = GameObject.FindObjectOfType<LightBehaviour>();
         light.SizeLight();
     }
 
-    public static void SubPointer()
+    public static void SubPointer(float value)
     {
-        Score = Score - 0.1f;
+        Score = Score - value;
         if (!light) light = GameObject.FindObjectOfType<LightBehaviour>();
         light.SizeLight();
     }

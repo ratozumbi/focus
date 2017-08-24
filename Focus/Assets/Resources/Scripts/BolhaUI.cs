@@ -30,7 +30,7 @@ public class BolhaUI : MonoBehaviour, IPointerDownHandler
 	}
 
 	public virtual void OnPointerDown(PointerEventData ped){
-        ScoreManager.AddPointer();
+        ScoreManager.AddPointer(0.1f);
 
         Color color = background.materials[0].color;
         color.a -= 0.1f;

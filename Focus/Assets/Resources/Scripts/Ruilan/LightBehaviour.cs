@@ -21,7 +21,7 @@ public class LightBehaviour : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        scaleLightInit = light.localScale.x;
+        scaleLightInit = light.localScale.y;
     }
 	
     private void Update()
@@ -31,9 +31,9 @@ public class LightBehaviour : MonoBehaviour {
 
     private void Move()
     {
-        baseLight.position = new Vector3(playerPosition.position.x, playerPosition.position.y - 0.8f);
+        baseLight.position = new Vector3(playerPosition.position.x, playerPosition.position.y -0.8f - ScoreManager.Score / 10);
         //Get the location of the UI element you want the 3d onject to move towards
-        Vector3 screenPoint = focusPosition.transform.position;// + new Vector3(0, 0, 500);  //the "+ new Vector3(0,0,5)" ensures that the object is so close to the camera you dont see it
+        Vector3 screenPoint = focusPosition.transform.position;
 
         //find out where this is in world space
         Vector3 worldPos = camera0.ScreenToWorldPoint(screenPoint);
@@ -45,6 +45,16 @@ public class LightBehaviour : MonoBehaviour {
 
     public void SizeLight()
     {
-        light.localScale = new Vector3(scaleLightInit + ScoreManager.Score, light.localScale.y, light.localScale.z);
+        //light.localScale = new Vector3(light.localScale.x, light.localScale.y + ScoreManager.Score, light.localScale.z);
+        //baseLight.transform.position = new Vector3(baseLight.transform.position.x, baseLight.transform.position.y - ScoreManager.Score/100, baseLight.transform.position.z);
+
+        GameObject baseL = GameObject.Find("base.L");
+        GameObject baseR = GameObject.Find("base.R");
+
+        baseL.transform.position = new Vector3(baseL.transform.position.x - ScoreManager.Score / 10, baseL.transform.position.y, baseL.transform.position.z);
+        baseR.transform.position = new Vector3(baseR.transform.position.x + ScoreManager.Score / 10, baseR.transform.position.y, baseR.transform.position.z);
+
+
+
     }
 }
