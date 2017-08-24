@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class BarraEquilibrio : MonoBehaviour {
 	public Slider slide;
-	//public UnityEngine.UI.Text txt;
-	//public UnityEngine.UI.Dropdown dd;
+    //public UnityEngine.UI.Text txt;
+    //public UnityEngine.UI.Dropdown dd;
 
-	private float []medio = new float[12];
+    public static int interactions = 6;
+
+	private float []medio = new float[interactions];
 	private int count = 0;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +22,7 @@ public class BarraEquilibrio : MonoBehaviour {
 	// Update is called once per frame
 	//12 ou int.Parse(dd.captionText.text)
 	void Update () {
-		if (count >= 12) {
+		if (count >= interactions) {
 			SetSlide ();
 			count = 0;
 		}
@@ -31,10 +33,10 @@ public class BarraEquilibrio : MonoBehaviour {
 
 	void SetSlide(){
 		float val = 0;
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < interactions; i++) {
 			val += medio [i];
 		}
-		val = val / 12;
+		val = val / interactions;
 
 		slide.value = val + 0.5f;
 	}

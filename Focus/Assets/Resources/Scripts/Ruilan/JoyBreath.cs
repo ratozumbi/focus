@@ -13,7 +13,10 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
 
     [SerializeField] private Transform pointerSpawn;
 
-    [SerializeField] private GameObject spawn;
+    [SerializeField]
+    private GameObject spawn;
+    [SerializeField]
+    private GameObject timer;
 
     private Transform[] posSpawns;
 
@@ -51,6 +54,8 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
 
             GameObject joyStick = GameObject.Find("Canvas").GetComponentInChildren<VirtualJoystick>(true).gameObject;
             joyStick.SetActive(true);
+            
+            timer.SetActive(true);
         }
 
 

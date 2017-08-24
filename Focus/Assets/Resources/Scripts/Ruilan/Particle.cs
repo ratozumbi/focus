@@ -11,7 +11,7 @@ public class Particle : MonoBehaviour {
 
     private void Update()
     {
-        transform.Translate(Vector3.up * Velocity);
+        transform.Translate(Vector3.up * Velocity * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
