@@ -16,7 +16,19 @@ public class Particle : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("colision");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Focus"))
+        {
+            ReactionColisionParticle();
+            gameObject.SetActive(false);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+
+        Debug.Log("trigger");
+        if (other.gameObject.layer == LayerMask.NameToLayer("Focus"))
         {
             ReactionColisionParticle();
             gameObject.SetActive(false);
