@@ -10,12 +10,7 @@ public class VisibilityObject : MonoBehaviour {
     [SerializeField] private float minAlpha;
     private int maxAlpha = 1;
 
-    SpriteRenderer sprite;
-
-    private void Awake()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-    }
+    [SerializeField] SpriteRenderer sprite;
 
     private IEnumerator FadeIn()
     {
