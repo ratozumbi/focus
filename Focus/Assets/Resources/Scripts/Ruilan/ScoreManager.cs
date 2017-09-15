@@ -11,6 +11,13 @@ public class ScoreManager : MonoBehaviour {
     private void Awake()
     {
         light = GameObject.FindObjectOfType<LightBehaviour>();
+
+
+    }
+
+    private void Start()
+    {
+        InvokeRepeating("AutomatedSizeLight", 0, 0.3f);
     }
 
     public static void AddPointer(float value)
@@ -33,5 +40,14 @@ public class ScoreManager : MonoBehaviour {
         }
         if (!light) light = GameObject.FindObjectOfType<LightBehaviour>();
         light.SizeLight();
+    }
+
+    //Test
+    private void AutomatedSizeLight()
+    {
+        AddPointer(1);
+
+        if(Score >= 7)
+            CancelInvoke("AutomatedSizeLight");
     }
 }
