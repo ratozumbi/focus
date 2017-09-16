@@ -12,6 +12,13 @@ public class VisibilityObject : MonoBehaviour {
 
     [SerializeField] SpriteRenderer sprite;
 
+    private static bool isFade;
+
+    private void Start()
+    {
+        isFade = false;
+    }
+
     private IEnumerator FadeIn()
     {
         Color color = sprite.color;
@@ -46,6 +53,7 @@ public class VisibilityObject : MonoBehaviour {
         {
             StopAllCoroutines();
             StartCoroutine(FadeIn());
+            isFade = true;
         }
     }
 
@@ -55,6 +63,7 @@ public class VisibilityObject : MonoBehaviour {
         {
             StopAllCoroutines();
             StartCoroutine(FadeOut());
+            isFade = false;
         }
     }
 

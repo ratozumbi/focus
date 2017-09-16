@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		// Move senteces
 		transform.position = new Vector3(transform.position.x + joystick.Horizontal()* walkSpeed *Time.deltaTime,
-			transform.position.y + joystick.Vertical()* walkSpeed *Time.deltaTime, -0.1f);
+			transform.position.y + joystick.Vertical()* walkSpeed *Time.deltaTime, transform.position.z);
 		 
 	}
 }
