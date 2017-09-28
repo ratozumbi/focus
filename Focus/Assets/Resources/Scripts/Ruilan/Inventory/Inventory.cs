@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour {
     [SerializeField] private SpriteRenderer[] equipmentInGame;
     [SerializeField] private SlotEquipment[] equipmentsSlots;
 
-    [SerializeField] private SlotItem[] itemSlot;
+    [SerializeField] public SlotItem[] itemSlot;
 
     public void AddItem(Item item)
     {

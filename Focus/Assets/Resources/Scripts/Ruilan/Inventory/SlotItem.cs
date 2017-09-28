@@ -19,10 +19,19 @@ public class SlotItem : MonoBehaviour
         itemInSlot = null;
     }
 
+    public Item ItemInSlot { get { return itemInSlot;} }
+
     public void Add(ref Item item)
     {
         icon.sprite = item.icon;
         itemInSlot = item;
         IsEmpty = false;
+    }
+
+    public void Removed()
+    {
+        icon.sprite = null;
+        itemInSlot = null;
+        IsEmpty = true;
     }
 }
