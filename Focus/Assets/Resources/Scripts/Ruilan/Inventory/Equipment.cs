@@ -8,6 +8,7 @@ public class Equipment : ScriptableObject
 {
     public EquipmentSlot typeEquipment;
     public Sprite icon;
+    public Sprite spriteInGame;
 
     public enum EquipmentSlot { Head, Chest, Leg }
 }

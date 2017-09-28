@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
+    [SerializeField] private SpriteRenderer[] equipmentInGame;
     [SerializeField] private SlotEquipment[] equipmentsSlots;
 
     [SerializeField] private SlotItem[] itemSlot;
@@ -23,6 +24,8 @@ public class Inventory : MonoBehaviour {
     public void AddEquipment(Equipment equipment)
     {
         int indexSlot = (int)equipment.typeEquipment;
+
         equipmentsSlots[indexSlot].Add(equipment);
+        equipmentInGame[indexSlot].sprite = equipment.spriteInGame;
     }
 }
