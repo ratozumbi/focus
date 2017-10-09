@@ -11,6 +11,8 @@ public struct DescriptionMission
     [TextArea]
     public string[] textBubbleDescription;
     public Item itemRequested;
+    public TypeBubbleSensory typeSensory;
+    public int scoreEarned;
 }
 
 public class Mission : MonoBehaviour {
@@ -59,6 +61,7 @@ public class Mission : MonoBehaviour {
                 mission.isCompleted = true;
 
                 inventoryPlayer.itemSlot[i].Removed();
+                SensoryHUD.instance.AddScore(mission.scoreEarned, mission.typeSensory);
                 break;
             }
         }
