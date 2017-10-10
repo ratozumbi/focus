@@ -7,7 +7,14 @@ public class Inventory : MonoBehaviour {
     [SerializeField] private SpriteRenderer[] equipmentInGame;
     [SerializeField] private SlotEquipment[] equipmentsSlots;
 
-    [SerializeField] public SlotItem[] itemSlot;
+    public SlotItem[] itemSlot;
+
+    public static Inventory instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
 
     public void AddItem(Item item)
     {
