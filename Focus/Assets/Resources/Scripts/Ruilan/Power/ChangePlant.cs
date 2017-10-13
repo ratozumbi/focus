@@ -35,6 +35,7 @@ public class ChangePlant : MonoBehaviour {
                         else
                             newPlant = Instantiate(prefGoodPlant, curPos.position, curPos.rotation, parentInst);
                     }
+                    break;
                 }
             }
         }
