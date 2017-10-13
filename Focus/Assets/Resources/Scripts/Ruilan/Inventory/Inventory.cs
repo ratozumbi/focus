@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
     [SerializeField] private SpriteRenderer[] equipmentInGame;
-    [SerializeField] private SlotEquipment[] equipmentsSlots;
+    public SlotEquipment[] equipmentsSlots;
 
     public SlotItem[] itemSlot;
 
@@ -26,6 +26,11 @@ public class Inventory : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    public Equipment GetEquipment(Equipment.EquipmentSlot index)
+    {
+        return equipmentsSlots[(int)index].GetEquipment;
     }
 
     public void AddEquipment(Equipment equipment)

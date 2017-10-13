@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class SlotEquipment : MonoBehaviour {
 
-    [SerializeField] private Image icon;
+    public Image icon;
 
+    private Equipment equipment;
+
+    public Equipment GetEquipment { get { return equipment; } }
 
 	public void Add (Equipment item)
     {
+        equipment = item;
         icon.sprite = item.icon;
     }
     

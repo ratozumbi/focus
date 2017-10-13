@@ -8,8 +8,10 @@ public class PickUpEquipment : Interactable
 
     private Inventory inventory;
 
-	// Use this for initialization
-	void Awake () {
+    private static Equipment auxEqui;
+
+    // Use this for initialization
+    void Awake () {
         inventory = FindObjectOfType<Inventory>();
     }
 	
@@ -22,6 +24,26 @@ public class PickUpEquipment : Interactable
     {
         base.Interact();
 
+        auxEqui = Inventory.instance.GetEquipment(equipment.typeEquipment);
+
         inventory.AddEquipment(equipment);
+
+        ChangeEquipment();
+
+        equipment = auxEqui;
+    }
+
+    private void ChangeEquipment()
+    {
+        SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+
+        if (auxEqui != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = auxEqui.icon;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
