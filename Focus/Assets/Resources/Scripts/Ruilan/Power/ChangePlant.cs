@@ -11,7 +11,6 @@ public class ChangePlant : MonoBehaviour {
     [SerializeField] private Transform parentInst;
 
     [SerializeField] private GameObject prefGoodPlant;
-    [SerializeField] private GameObject prefBadPlant;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,10 +29,7 @@ public class ChangePlant : MonoBehaviour {
                         Transform curPos = currentPlant.transform;
                         Destroy(currentPlant);
                         GameObject newPlant;
-                        if (isGoodPlant)
-                            newPlant = Instantiate(prefBadPlant, curPos.position, curPos.rotation, parentInst);
-                        else
-                            newPlant = Instantiate(prefGoodPlant, curPos.position, curPos.rotation, parentInst);
+                        newPlant = Instantiate(prefGoodPlant, curPos.position, curPos.rotation, parentInst);
                     }
                     break;
                 }
