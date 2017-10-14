@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class Item : ScriptableObject
 {
     public Sprite icon;
-    public Power power;
+	public Power power;
+	public Debuf debuf;
     public float secDurationActived;
 }
 
-public enum Power { Dig, Jump, FractureWalls, OpenDoor, ClearSmoke, ChangePlant, ClearSmokeActived }
+public enum Power { Dig, Jump, FractureWalls, OpenDoor, ClearSmoke, ChangePlant, ClearSmokeActived, None }
+public enum Debuf { None, Blind, Deaf, Unsensible }

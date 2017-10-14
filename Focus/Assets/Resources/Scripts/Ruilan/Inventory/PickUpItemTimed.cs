@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpItem: Interactable {
+public class PickUpItemTimed: MonoBehaviour {
 
     [SerializeField] private Item item;
     private Inventory inventory;
@@ -12,14 +12,13 @@ public class PickUpItem: Interactable {
         inventory = FindObjectOfType<Inventory>();
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
+	private void Start()
+	{
+		Invoke("GetTheItem", 3);
 	}
 
-    public override void Interact()
+    public void GetTheItem()
     {
-        base.Interact();
 
         inventory.AddItem(item);
         Destroy(this.gameObject);
