@@ -13,6 +13,9 @@ public class SlotItem : MonoBehaviour
 
     private Item itemInSlot;
 
+    public bool isActived;
+    private float secDurationActivedCurent;
+
     private void Start()
     {
         IsEmpty = true;
@@ -20,6 +23,30 @@ public class SlotItem : MonoBehaviour
     }
 
     public Item ItemInSlot { get { return itemInSlot;} }
+
+    public void ActivedItem()
+    {
+        if (!isActived)
+        {
+            isActived = true;
+            secDurationActivedCurent = ItemInSlot.secDurationActived;
+            InvokeRepeating("CountTimeActived", 0, 1f);
+        }
+    }
+
+    private void CountTimeActived()
+    {
+        if (ItemInSlot.power == Power.ClearSmokeActived)
+        {
+            Debug.Log("Active: " + ItemInSlot.secDurationActived);
+            --secDurationActivedCurent;
+            if (secDurationActivedCurent <= 0)
+            {
+                Removed();
+                CancelInvoke("CountTimeActived");
+            }
+        }
+    } 
 
     public void Add(ref Item item)
     {

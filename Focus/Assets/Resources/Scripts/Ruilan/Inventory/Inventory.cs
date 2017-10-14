@@ -15,22 +15,6 @@ public class Inventory : MonoBehaviour {
     {
         instance = this;
     }
-    
-    private void CountTimeActive()
-    {
-        for (int i = 0; i < itemSlot.Length; i++)
-        {
-            if(itemSlot[i].ItemInSlot.isActivatable)
-            {
-                --itemSlot[i].ItemInSlot.secDurationActived;
-                if(itemSlot[i].ItemInSlot.secDurationActived <= 0)
-                {
-                    itemSlot[i].Removed();
-                    CancelInvoke("CountTimeActive");
-                }
-            }
-        }
-    }
 
     public void AddItem(Item item)
     {
