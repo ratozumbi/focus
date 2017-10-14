@@ -16,6 +16,7 @@ public class Door : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Active Door");
         if (collision.gameObject.tag == "Player" && !isOpen)
         {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
