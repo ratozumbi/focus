@@ -10,11 +10,13 @@ public class VisibilityObject : MonoBehaviour {
     [SerializeField] private float minAlpha;
     private int maxAlpha = 1;
 
-    SpriteRenderer sprite;
+    [SerializeField] SpriteRenderer sprite;
 
-    private void Awake()
+    private static bool isFade;
+
+    private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        isFade = false;
     }
 
     private IEnumerator FadeIn()
@@ -51,6 +53,7 @@ public class VisibilityObject : MonoBehaviour {
         {
             StopAllCoroutines();
             StartCoroutine(FadeIn());
+            isFade = true;
         }
     }
 
@@ -60,6 +63,7 @@ public class VisibilityObject : MonoBehaviour {
         {
             StopAllCoroutines();
             StartCoroutine(FadeOut());
+            isFade = false;
         }
     }
 

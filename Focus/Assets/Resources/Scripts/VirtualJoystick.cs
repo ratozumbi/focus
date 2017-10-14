@@ -9,6 +9,8 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 	private Image joyImg;
 	private Vector3 inputVector;
 
+    [SerializeField] private GameObject Inventory;
+
 	private void Start (){
 		bgImg = GetComponent<Image> ();
 		joyImg = transform.GetChild (0).GetComponent<Image> ();
@@ -30,8 +32,16 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 		}
 	}
 
+    private void Update()
+    {
+        if (joyImg.rectTransform.anchoredPosition == Vector2.zero)
+            Inventory.SetActive(true);
+        else
+            Inventory.SetActive(false);
+    }
 
-	public virtual void OnPointerDown(PointerEventData ped){
+
+    public virtual void OnPointerDown(PointerEventData ped){
 		OnDrag (ped);
 		Vibration.Vibrate (50);
 	}
@@ -39,7 +49,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
 		inputVector = Vector3.zero;
 		joyImg.rectTransform.anchoredPosition = Vector3.zero;
-	}
+    }
 
 	public virtual void OnDrag(PointerEventData ped){
 		Vector2 pos;
@@ -52,6 +62,6 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 			inputVector = inputVector.magnitude > 1 ? inputVector.normalized : inputVector;
 
 			joyImg.rectTransform.anchoredPosition = new Vector3 (inputVector.x * bgImg.rectTransform.sizeDelta.x / 3, inputVector.z * bgImg.rectTransform.sizeDelta.y / 3);
-		}
+        }
 	}
 }
