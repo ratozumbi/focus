@@ -9,9 +9,17 @@ public class AbsorbFocus : MonoBehaviour {
     [SerializeField] private GameObject bubbleAbsorb;
     [SerializeField] private float absorbScore;
 
+
+	[SerializeField] private Sprite img0;
+	[SerializeField] private Sprite img1;
+	[SerializeField] private Sprite img2;
+
+
     private Transform transBubble;
 
     private bool isAbsorb;
+	private bool setInactive;
+	private float scoreLost = 0;
 
     private ScoreManager score;
 
@@ -23,6 +31,25 @@ public class AbsorbFocus : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+		if(scoreLost > 1)
+		{
+			GetComponent<SpriteRenderer>().sprite = img0;
+		}
+
+		if(scoreLost > 2)
+		{
+			GetComponent<SpriteRenderer>().sprite = img1;
+		}
+
+		if(scoreLost > 3)
+		{
+			GetComponent<SpriteRenderer>().sprite = img2;
+			setInactive = true;
+		}
+			
+
         if (isAbsorb)
         {
             float step = speed * Time.deltaTime;
@@ -33,20 +60,30 @@ public class AbsorbFocus : MonoBehaviour {
             {
                 transBubble.position = focus.position;
                 ScoreManager.SubPointer(absorbScore);
+
+				scoreLost += absorbScore;
+
+				if (setInactive) {
+					bubbleAbsorb.SetActive(false);
+					isAbsorb = false;
+					setInactive = false;
+				}
             }
         }
         else
         {
             transBubble.position = focus.position;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+		if(collision.gameObject.tag == "Player" && scoreLost < 3)
         {
             bubbleAbsorb.SetActive(true);
             isAbsorb = true;
+			setInactive = false;
         }
     }
 
@@ -54,8 +91,9 @@ public class AbsorbFocus : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            bubbleAbsorb.SetActive(false);
-            isAbsorb = false;
+            //bubbleAbsorb.SetActive(false);
+            //isAbsorb = false;
+			setInactive = true;
         }
 
         if (collision.gameObject.tag == "BubbleAbsorved")
