@@ -43,9 +43,9 @@ public class Smoke : MonoBehaviour {
             {
                 if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.ClearSmoke)
                 {
-                    float direction = (player.position - this.transform.position).normalized.y;
+                    Vector2 direction = (player.position - this.transform.position).normalized;
                     Debug.Log(direction);
-                    transform.Translate(new Vector3(0, -direction) * Time.deltaTime);
+                    transform.Translate(-direction * Time.deltaTime);
                 }
             }
         }
