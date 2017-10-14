@@ -8,7 +8,8 @@ public class Item : ScriptableObject
 {
     public Sprite icon;
     public Power power;
-    
+    public bool isActivatable;
+    public float secDurationActived;
 }
 
-public enum Power { Dig, Jump, FractureWalls, OpenDoor, ClearSmoke, ChangePlant}
+public enum Power { Dig, Jump, FractureWalls, OpenDoor, ClearSmoke, ChangePlant, None}
