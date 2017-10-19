@@ -5,12 +5,6 @@ using UnityEngine;
 public class PickUpItemTimed: MonoBehaviour {
 
     [SerializeField] private Item item;
-    private Inventory inventory;
-
-    // Use this for initialization
-    void Awake () {
-        inventory = FindObjectOfType<Inventory>();
-    }
 	
 	private void Start()
 	{
@@ -19,8 +13,7 @@ public class PickUpItemTimed: MonoBehaviour {
 
     public void GetTheItem()
     {
-
-        inventory.AddItem(item);
+        Inventory.instance.AddItem(item);
         Destroy(this.gameObject);
     }
 }

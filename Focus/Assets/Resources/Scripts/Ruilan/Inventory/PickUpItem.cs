@@ -5,7 +5,6 @@ using UnityEngine;
 public class PickUpItem: Interactable {
 
     [SerializeField] private Item item;
-	[SerializeField] private Inventory inventory;
 
     // Use this for initialization
     void Awake () {
@@ -21,7 +20,7 @@ public class PickUpItem: Interactable {
     {
         base.Interact();
 
-        inventory.AddItem(item);
-        Destroy(this.gameObject);
+        Inventory.instance.AddItem(item);
+        Destroy(gameObject);
     }
 }

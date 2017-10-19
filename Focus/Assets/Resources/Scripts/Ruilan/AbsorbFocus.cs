@@ -14,6 +14,8 @@ public class AbsorbFocus : MonoBehaviour {
 	[SerializeField] private Sprite img1;
 	[SerializeField] private Sprite img2;
 
+    [SerializeField] private GameObject itemDrop;
+    [SerializeField] private Transform posDropItem;
 
     private Transform transBubble;
 
@@ -28,26 +30,32 @@ public class AbsorbFocus : MonoBehaviour {
         transBubble = bubbleAbsorb.transform;
         score = FindObjectOfType<ScoreManager>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Start()
+    {
+        posDropItem.position = new Vector3(posDropItem.position.x, posDropItem.position.y, transform.position.z);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 
 		if(scoreLost > 1)
 		{
 			GetComponent<SpriteRenderer>().sprite = img0;
-		}
+        }
 
 		if(scoreLost > 2)
 		{
 			GetComponent<SpriteRenderer>().sprite = img1;
-		}
+        }
 
 		if(scoreLost > 3)
 		{
 			GetComponent<SpriteRenderer>().sprite = img2;
+
 			setInactive = true;
-		}
+        }
 			
 
         if (isAbsorb)
@@ -64,10 +72,11 @@ public class AbsorbFocus : MonoBehaviour {
 				scoreLost += absorbScore;
 
 				if (setInactive) {
-					bubbleAbsorb.SetActive(false);
+                    bubbleAbsorb.SetActive(false);
 					isAbsorb = false;
 					setInactive = false;
-				}
+                    Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
+                }
             }
         }
         else
