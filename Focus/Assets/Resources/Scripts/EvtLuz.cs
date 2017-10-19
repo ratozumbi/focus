@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EvtLuz : MonoBehaviour {
 
-
 	private GameObject player;
 	public float timeWait = 1f;
 
@@ -17,6 +16,15 @@ public class EvtLuz : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
+		{
+			if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Debuf.Blind)
+			{
+				return;
+			}
+		}
+
 		if (Time.realtimeSinceStartup - lastVibra > timeWait) {
 
 			lastVibra = Time.realtimeSinceStartup;

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PickUpItem: Interactable {
 
     [SerializeField] private Item item;
-    private Inventory inventory;
+	[SerializeField] private Inventory inventory;
 
     // Use this for initialization
     void Awake () {
-        inventory = FindObjectOfType<Inventory>();
+        //inventory = FindObjectOfType<Inventory>();
     }
 	
 	// Update is called once per frame

@@ -52,17 +52,17 @@ public class LightBehaviour : MonoBehaviour {
         GameObject baseR = GameObject.Find("base.R");
 
 
-        if (baseL.transform.localPosition.x - ScoreManager.Score / 10 < 5.0f && baseR.transform.localPosition.x + ScoreManager.Score / 10 > -5.0f)
+        if (baseL.transform.localPosition.x - ScoreManager.Score / 10 < 4.0f && baseR.transform.localPosition.x + ScoreManager.Score / 10 > -4.0f)
         {
             baseL.transform.position = new Vector3(baseL.transform.position.x - ScoreManager.Score / 10, baseL.transform.position.y, baseL.transform.position.z);
             baseR.transform.position = new Vector3(baseR.transform.position.x + ScoreManager.Score / 10, baseR.transform.position.y, baseR.transform.position.z);
             
         }
 
-        if (baseL.transform.localPosition.x > 5.0f && baseR.transform.localPosition.x < -5.0f)
+        if (baseL.transform.localPosition.x > 4.0f && baseR.transform.localPosition.x < -4.0f)
         {
-            baseL.transform.position = new Vector3(playerPosition.position.x - 4.9f, baseL.transform.position.y, baseL.transform.position.z);
-            baseR.transform.position = new Vector3(playerPosition.position.x + 4.9f, baseR.transform.position.y, baseR.transform.position.z);
+            baseL.transform.position = new Vector3(playerPosition.position.x - 3.9f, baseL.transform.position.y, baseL.transform.position.z);
+            baseR.transform.position = new Vector3(playerPosition.position.x + 3.9f, baseR.transform.position.y, baseR.transform.position.z);
         }
 
         if (baseL.transform.localPosition.x < 0 && baseR.transform.localPosition.x > 0)
