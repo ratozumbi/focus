@@ -36,8 +36,11 @@ public class EvtLuz : MonoBehaviour {
                     isActiveDebuf = true;
             }
 
-            if (Vector3.Distance (transform.position, player.transform.position) < 1 && !isActiveDebuf) {
-				Vector2 pos = player.transform.position;
+            if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+                if (isActiveDebuf)
+                    Inventory.instance.itemSlot[indexCurSlot].Removed();
+
+                Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
 				pos = pos + circ;

@@ -39,6 +39,9 @@ public class EvtSom : MonoBehaviour {
             }
 
             if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+                if (isActiveDebuf)
+                    Inventory.instance.itemSlot[indexCurSlot].Removed();
+
                 //GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
