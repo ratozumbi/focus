@@ -9,8 +9,11 @@ public class EvtSom : MonoBehaviour {
 	public float timeWait = 1f;
 
 	private float lastVibra = 0;
-	// Use this for initialization
-	void Start () {
+
+    private bool isActiveDebuf;
+
+    // Use this for initialization
+    void Start () {
 
 		player = GameObject.Find ("Player");
 		//GetComponent<SpriteRenderer> ().enabled = false;
@@ -22,15 +25,30 @@ public class EvtSom : MonoBehaviour {
 
 			lastVibra = Time.realtimeSinceStartup;
 
-			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
-				//GetComponent<SpriteRenderer> ().enabled = true;
+            int indexCurSlot = 0;
+            for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
+            {
+                if (Inventory.instance.itemSlot[i].ItemInSlot.debuf == Debuf.Unsensible)
+                {
+                    isActiveDebuf = false;
+                    indexCurSlot = i;
+                    break;
+                }
+                else
+                    isActiveDebuf = true;
+            }
+
+            if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+                if (isActiveDebuf)
+                    Inventory.instance.itemSlot[indexCurSlot].Removed();
+                //GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 2 && !isActiveDebuf) {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 4 && !isActiveDebuf) {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;

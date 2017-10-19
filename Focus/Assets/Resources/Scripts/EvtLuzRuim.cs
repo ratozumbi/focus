@@ -10,8 +10,11 @@ public class EvtLuzRuim : MonoBehaviour {
 
 	private int luzCnt = 0;
 	private float lastVibra = 0;
-	// Use this for initialization
-	void Start () {
+
+    public bool isActiveDebuf;
+
+    // Use this for initialization
+    void Start () {
 
 		player = GameObject.Find ("Player");
 		//GetComponent<SpriteRenderer> ().enabled = false;
@@ -22,8 +25,24 @@ public class EvtLuzRuim : MonoBehaviour {
 		if (Time.realtimeSinceStartup - lastVibra > timeWait) {
 			lastVibra = Time.realtimeSinceStartup;
 
-			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
-				Vector2 pos = player.transform.position;
+            int indexCurSlot = 0;
+            for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
+            {
+                if (Inventory.instance.itemSlot[i].ItemInSlot.debuf == Debuf.Unsensible)
+                {
+                    isActiveDebuf = false;
+                    indexCurSlot = i;
+                    break;
+                }
+                else
+                    isActiveDebuf = true;
+            }
+
+            if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+                if (isActiveDebuf)
+                    Inventory.instance.itemSlot[indexCurSlot].Removed();
+
+                Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
 				pos = pos + circ;
@@ -40,7 +59,7 @@ public class EvtLuzRuim : MonoBehaviour {
 				GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 2 && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
@@ -54,7 +73,7 @@ public class EvtLuzRuim : MonoBehaviour {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 4 && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;

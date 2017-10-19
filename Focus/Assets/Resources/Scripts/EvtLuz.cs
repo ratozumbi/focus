@@ -7,8 +7,10 @@ public class EvtLuz : MonoBehaviour {
 	public float timeWait = 1f;
 
 	private float lastVibra = 0;
-	// Use this for initialization
-	void Start () {
+
+    public bool isActiveDebuf;
+    // Use this for initialization
+    void Start () {
 
 		player = GameObject.Find ("Player");
 		//GetComponent<SpriteRenderer> ().enabled = false;
@@ -17,23 +19,24 @@ public class EvtLuz : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Inventory.instance.itemSlot.Length > 0)
-        {
-            for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
-            {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.debuf == Debuf.Blind)
-                {
-                    return;
-                }
-            }
-
-        }
-
 		if (Time.realtimeSinceStartup - lastVibra > timeWait) {
 
 			lastVibra = Time.realtimeSinceStartup;
 
-			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+            int indexCurSlot = 0;
+            for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
+            {
+                if (Inventory.instance.itemSlot[i].ItemInSlot.debuf == Debuf.Unsensible)
+                {
+                    isActiveDebuf = false;
+                    indexCurSlot = i;
+                    break;
+                }
+                else
+                    isActiveDebuf = true;
+            }
+
+            if (Vector3.Distance (transform.position, player.transform.position) < 1 && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
@@ -51,7 +54,7 @@ public class EvtLuz : MonoBehaviour {
 				//GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 2 && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
@@ -65,7 +68,7 @@ public class EvtLuz : MonoBehaviour {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
+            } else if (Vector3.Distance (transform.position, player.transform.position) < 4 && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
