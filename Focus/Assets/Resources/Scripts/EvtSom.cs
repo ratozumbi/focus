@@ -23,15 +23,15 @@ public class EvtSom : MonoBehaviour {
 			lastVibra = Time.realtimeSinceStartup;
 
 			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
-				GetComponent<SpriteRenderer> ().enabled = true;
+				//GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
             } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
-				GetComponent<SpriteRenderer> ().enabled = false;
+				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
-				GetComponent<SpriteRenderer> ().enabled = false;
+				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             }

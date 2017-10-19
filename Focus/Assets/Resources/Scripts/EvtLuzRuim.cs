@@ -51,7 +51,7 @@ public class EvtLuzRuim : MonoBehaviour {
 				pos = pos + circ;
 				GameObject brilho2 = CriaLuz ();
 				Destroy (brilho2, 0.3f);
-				GetComponent<SpriteRenderer> ().enabled = false;
+				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
@@ -61,7 +61,7 @@ public class EvtLuzRuim : MonoBehaviour {
 				pos = pos + circ;
 				GameObject brilho1 = CriaLuz ();
 				Destroy (brilho1, 0.1f);
-				GetComponent<SpriteRenderer> ().enabled = false;
+				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             }

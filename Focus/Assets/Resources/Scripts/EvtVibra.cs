@@ -22,17 +22,17 @@ public class EvtVibra : MonoBehaviour {
 
 			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
 				Vibration.Vibrate (500);
-				GetComponent<SpriteRenderer> ().enabled = true;
+				//GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
             } else if (Vector3.Distance (transform.position, player.transform.position) < 2) {
 				Vibration.Vibrate (200);
-				GetComponent<SpriteRenderer> ().enabled = false;
+				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             } else if (Vector3.Distance (transform.position, player.transform.position) < 4) {
 				Vibration.Vibrate (50);
-				GetComponent<SpriteRenderer> ().enabled = false;
+				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             }
