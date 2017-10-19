@@ -33,9 +33,7 @@ public class EvtVibra : MonoBehaviour {
             }
 
             lastVibra = Time.realtimeSinceStartup;
-			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
-                if (isActiveDebuf)
-                    Inventory.instance.itemSlot[indexCurSlot].Removed();
+			if (Vector3.Distance (transform.position, player.transform.position) < 1 && !isActiveDebuf) {
 				Vibration.Vibrate (500);
 				//GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
