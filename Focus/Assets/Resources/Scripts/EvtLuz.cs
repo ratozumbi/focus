@@ -11,19 +11,23 @@ public class EvtLuz : MonoBehaviour {
 	void Start () {
 
 		player = GameObject.Find ("Player");
-		GetComponent<SpriteRenderer> ().enabled = false;
+		//GetComponent<SpriteRenderer> ().enabled = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
-		{
-			if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Debuf.Blind)
-			{
-				return;
-			}
-		}
+        if (Inventory.instance.itemSlot.Length > 0)
+        {
+            for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
+            {
+                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.debuf == Debuf.Blind)
+                {
+                    return;
+                }
+            }
+
+        }
 
 		if (Time.realtimeSinceStartup - lastVibra > timeWait) {
 

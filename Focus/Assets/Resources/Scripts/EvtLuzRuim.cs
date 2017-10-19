@@ -14,7 +14,7 @@ public class EvtLuzRuim : MonoBehaviour {
 	void Start () {
 
 		player = GameObject.Find ("Player");
-		GetComponent<SpriteRenderer> ().enabled = false;
+		//GetComponent<SpriteRenderer> ().enabled = false;
 	}
 
 	// Update is called once per frame

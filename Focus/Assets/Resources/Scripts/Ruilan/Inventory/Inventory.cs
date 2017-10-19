@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour {
     private void Start()
     {
         instance = this;
+        this.gameObject.SetActive(false);
     }
 
     public void AddItem(Item item)
