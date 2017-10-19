@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour {
 
     private void Start()
     {
-        InvokeRepeating("AutomatedSizeLight", 0, 0.3f);
+        //InvokeRepeating("AutomatedSizeLight", 0, 0.3f);
     }
 
     public static void AddPointer(float value)

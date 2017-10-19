@@ -8,7 +8,7 @@ public class BarraEquilibrio : MonoBehaviour {
     //public UnityEngine.UI.Text txt;
     //public UnityEngine.UI.Dropdown dd;
 
-    public static int interactions = 6;
+    public static int interactions = 1;
 
 	private float []medio = new float[interactions];
 	private int count = 0;

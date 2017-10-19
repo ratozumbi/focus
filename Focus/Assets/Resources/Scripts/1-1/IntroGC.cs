@@ -35,7 +35,7 @@ public class IntroGC : MonoBehaviour {
                 if (Time.time - timer > 3f)
                 {
                     //surge logo empresa
-                    logoImg.color = new Color(255, 255, 255, logoImg.color.a + 0.01f);
+                    logoImg.color = new Color(255, 255, 255, logoImg.color.a + 0.1f);
                     if (logoImg.color.a > 0.999)
                     {
                         timer = Time.time;
@@ -47,7 +47,7 @@ public class IntroGC : MonoBehaviour {
                 //some logo empresa
                 if (Time.time - timer > 3f)
                 {
-                    logoImg.color = new Color(255, 255, 255, logoImg.color.a - 0.01f);
+                    logoImg.color = new Color(255, 255, 255, logoImg.color.a - 0.1f);
                     if (logoImg.color.a < 0.001)
                     {
                         currEvtFase = 2;
@@ -74,7 +74,7 @@ public class IntroGC : MonoBehaviour {
 
                     foreach (Image img in vecBarra)
                     {
-                        img.color = new Color(255, 255, 255, img.color.a + 0.01f);
+                        img.color = new Color(255, 255, 255, img.color.a + 0.1f);
                         if (img.color.a > 0.999 && img.Equals(tiltImg))
                         {
                             currEvtFase = 3;
@@ -90,7 +90,7 @@ public class IntroGC : MonoBehaviour {
                 //some tilt
                 if (Time.time - timer > 3f)
                 {
-                    tiltImg.color = new Color(255, 255, 255, tiltImg.color.a - 0.01f);
+                    tiltImg.color = new Color(255, 255, 255, tiltImg.color.a - 0.1f);
                     if (tiltImg.color.a < 0.001)
                     {
                         currEvtFase = 4;
