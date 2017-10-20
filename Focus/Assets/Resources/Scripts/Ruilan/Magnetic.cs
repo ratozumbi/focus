@@ -17,8 +17,6 @@ public class Magnetic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        Debug.Log(player.gameObject.name);
         if(Vector2.Distance(player.position, transform.position) < distance) {
 
             Vector2 direction = this.transform.position - player.position;

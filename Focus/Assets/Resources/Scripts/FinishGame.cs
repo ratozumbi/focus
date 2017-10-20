@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FinishGame : MonoBehaviour
 {
+    [S[SerializeField] private GameObject image;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,8 +21,19 @@ public class FinishGame : MonoBehaviour
             }
             if(numEquipment == (Inventory.instance.equipmentsSlots.Length - 1))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                ResetScene()
             }
         }
+    }
+
+    private void ResetScene()
+    {
+        image.SetActive(true);
+        invoke("LoadScene", 3f);
+    }
+
+    private void LoadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
