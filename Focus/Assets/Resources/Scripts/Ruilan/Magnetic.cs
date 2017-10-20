@@ -11,14 +11,15 @@ public class Magnetic : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        player = GameObject.Find("Player").transform;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
 
-        if(Vector2.Distance(player.position, this.transform.position) < distance) {
+        Debug.Log(player.gameObject.name);
+        if(Vector2.Distance(player.position, transform.position) < distance) {
 
             Vector2 direction = this.transform.position - player.position;
             direction = direction.normalized;
