@@ -41,14 +41,14 @@ public class EvtVibraRuim : MonoBehaviour {
             {
                 if (isActiveDebuf)
                     Inventory.instance.itemSlot[indexCurSlot].Removed();
-                Vibration.Vibrate(500);
+                Vibration.Vibrate(1000);
                 //GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
             }
             else if (Vector3.Distance(transform.position, player.transform.position) < 2 && !isActiveDebuf)
             {
-                Vibration.Vibrate(200);
+                Vibration.Vibrate(600);
                 //GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
