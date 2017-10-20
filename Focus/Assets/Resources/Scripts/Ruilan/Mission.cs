@@ -13,6 +13,8 @@ public struct DescriptionMission
     public Item itemRequested;
     public TypeBubbleSensory typeSensory;
     public int scoreEarned;
+    public GameObject itemDrop;
+    public Transform posDropItem;
 }
 
 public class Mission : MonoBehaviour {
@@ -62,6 +64,8 @@ public class Mission : MonoBehaviour {
 
                 inventoryPlayer.itemSlot[i].Removed();
                 SensoryHUD.instance.AddScore(mission.scoreEarned, mission.typeSensory);
+
+                Instantiate(mission.itemDrop, mission.posDropItem.position, mission.posDropItem.rotation, transform);
                 break;
             }
         }

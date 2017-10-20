@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class FinishGame : MonoBehaviour {
+public class FinishGame : MonoBehaviour
+{
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +13,7 @@ public class FinishGame : MonoBehaviour {
             int numEquipment = 0;
             for (int i = 0; i < Inventory.instance.equipmentsSlots.Length; i++)
             {
-                if(Inventory.instance.equipmentsSlots[i].GetEquipment() != null)
+                if(Inventory.instance.equipmentsSlots[i].GetEquipment != null)
                 {
                     ++numEquipment;
                 }
