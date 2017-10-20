@@ -21,7 +21,7 @@ public class FinishGame : MonoBehaviour
             }
             if(numEquipment == (Inventory.instance.equipmentsSlots.Length - 1))
             {
-                ResetScene()
+                ResetScene();
             }
         }
     }
