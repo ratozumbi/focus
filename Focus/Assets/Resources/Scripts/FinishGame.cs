@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FinishGame : MonoBehaviour
 {
-    [S[SerializeField] private GameObject image;
+    [SerializeField] private GameObject image;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
