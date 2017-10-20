@@ -41,13 +41,13 @@ public class Smoke : MonoBehaviour {
         if (collPlayer) {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.ClearSmoke)
+                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.ClearSmoke)
                 {
                     Vector2 direction = (player.position - this.transform.position).normalized;
                     Debug.Log(direction);
                     transform.Translate(-direction * Time.deltaTime);
                 }
-                else if(!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.ClearSmokeActived && Inventory.instance.itemSlot[i].isActived)
+                else if(!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.ClearSmokeActived && Inventory.instance.itemSlot[i].isActived)
                 {
                     Vector2 direction = (player.position - this.transform.position).normalized;
                     Debug.Log(direction);

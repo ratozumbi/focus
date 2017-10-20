@@ -21,7 +21,7 @@ public class Door : MonoBehaviour {
         {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.OpenDoor)
+                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.OpenDoor)
                 {
 					Inventory.instance.itemSlot [i].Removed ();
                     GetComponent<SpriteRenderer>().sprite = openSpr;

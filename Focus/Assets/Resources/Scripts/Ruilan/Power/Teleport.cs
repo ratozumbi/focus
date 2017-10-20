@@ -29,7 +29,7 @@ public class Teleport : MonoBehaviour {
         {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.Jump)
+                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.Jump)
                 {
                     teleportLink.IsExitTeleport = true;
                     collision.gameObject.transform.position = posTeleportLink.position;

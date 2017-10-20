@@ -57,7 +57,7 @@ public class Mission : MonoBehaviour {
     {
         for (int i = 0; i < inventoryPlayer.itemSlot.Length; i++)
         {
-            if (GameObject.Equals(inventoryPlayer.itemSlot[i].ItemInSlot, mission.itemRequested))
+            if (GameObject.Equals(inventoryPlayer.itemSlot[i].itemInSlot, mission.itemRequested))
             {
                 mission.inProgress = false;
                 mission.isCompleted = true;

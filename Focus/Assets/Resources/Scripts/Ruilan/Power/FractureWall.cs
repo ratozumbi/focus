@@ -19,7 +19,7 @@ public class FractureWall : MonoBehaviour {
         {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.FractureWalls)
+                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.FractureWalls)
                 {
                     Destroy(wallDestroy);
                     coll.enabled = false;

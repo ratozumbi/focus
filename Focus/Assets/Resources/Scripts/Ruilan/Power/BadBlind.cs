@@ -19,7 +19,7 @@ public class BadBlind : MonoBehaviour
 		{
 			for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
 			{
-				if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.debuf == Debuf.Blind)
+				if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Blind)
 				{
 					Destroy(wallDestroy);
 					coll.enabled = false;

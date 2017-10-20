@@ -11,7 +11,7 @@ public class SlotItem : MonoBehaviour
 
     public bool IsEmpty { get; set; }
 
-    private Item itemInSlot;
+	public Item itemInSlot;
 
     public bool isActived;
     private float secDurationActivedCurent;
@@ -22,23 +22,23 @@ public class SlotItem : MonoBehaviour
         itemInSlot = null;
     }
 
-    public Item ItemInSlot { get { return itemInSlot;} }
+    //public Item ItemInSlot { get { return itemInSlot;} } //tava retornando instancia nula
 
     public void ActivedItem()
     {
         if (!isActived)
         {
             isActived = true;
-            secDurationActivedCurent = ItemInSlot.secDurationActived;
+            secDurationActivedCurent = itemInSlot.secDurationActived;
             InvokeRepeating("CountTimeActived", 0, 1f);
         }
     }
 
     private void CountTimeActived()
     {
-        if (ItemInSlot.power == Power.ClearSmokeActived)
+        if (itemInSlot.power == Power.ClearSmokeActived)
         {
-            Debug.Log("Active: " + ItemInSlot.secDurationActived);
+            Debug.Log("Active: " + itemInSlot.secDurationActived);
             --secDurationActivedCurent;
             if (secDurationActivedCurent <= 0)
             {

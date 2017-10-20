@@ -28,7 +28,7 @@ public class Hole : MonoBehaviour {
         {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if(!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.Dig)
+                if(!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.Dig)
                 {
                     holeLink.IsExitHole = true;
                     collision.gameObject.transform.position = posHoleLink.position;

@@ -18,7 +18,7 @@ public class ChangePlant : MonoBehaviour {
         {
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].ItemInSlot.power == Power.ChangePlant)
+                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.power == Power.ChangePlant)
                 {
                     activedpower = true;
                     Debug.Log("Power Change Plant");
