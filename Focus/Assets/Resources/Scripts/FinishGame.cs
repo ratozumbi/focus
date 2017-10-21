@@ -19,7 +19,9 @@ public class FinishGame : MonoBehaviour
                     ++numEquipment;
                 }
             }
-            if(numEquipment == (Inventory.instance.equipmentsSlots.Length - 1))
+
+            Debug.Log("Num Equipment: " + numEquipment + " " + Inventory.instance.equipmentsSlots.Length);
+            if(numEquipment == (Inventory.instance.equipmentsSlots.Length))
             {
                 ResetScene();
             }
