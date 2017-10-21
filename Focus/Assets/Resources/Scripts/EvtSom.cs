@@ -10,6 +10,8 @@ public class EvtSom : MonoBehaviour {
 
 	private float lastVibra = 0;
 
+	public float distToAct = 3;
+
     private bool isActiveDebuf;
 
     // Use this for initialization
@@ -28,7 +30,7 @@ public class EvtSom : MonoBehaviour {
             int indexCurSlot = 0;
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Unsensible)
+				if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Deaf)
                 {
                     isActiveDebuf = false;
                     indexCurSlot = i;
@@ -38,18 +40,18 @@ public class EvtSom : MonoBehaviour {
                     isActiveDebuf = true;
             }
 
-            if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+			if (Vector3.Distance (transform.position, player.transform.position) < distToAct/3) {
                 if (isActiveDebuf)
                     Inventory.instance.itemSlot[indexCurSlot].Removed();
 
                 //GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 2 && !isActiveDebuf) {
+			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct/2 && !isActiveDebuf) {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 4 && !isActiveDebuf) {
+			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct && !isActiveDebuf) {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;

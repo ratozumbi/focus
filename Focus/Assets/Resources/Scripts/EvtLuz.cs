@@ -8,6 +8,8 @@ public class EvtLuz : MonoBehaviour {
 
 	private float lastVibra = 0;
 
+	public float distToAct = 3;
+
     public bool isActiveDebuf;
     // Use this for initialization
     void Start () {
@@ -26,7 +28,7 @@ public class EvtLuz : MonoBehaviour {
             int indexCurSlot = 0;
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Unsensible)
+				if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Blind)
                 {
                     isActiveDebuf = false;
                     indexCurSlot = i;
@@ -36,7 +38,7 @@ public class EvtLuz : MonoBehaviour {
                     isActiveDebuf = true;
             }
 
-            if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+			if (Vector3.Distance (transform.position, player.transform.position) < distToAct/3) {
                 if (isActiveDebuf)
                     Inventory.instance.itemSlot[indexCurSlot].Removed();
 
@@ -57,7 +59,7 @@ public class EvtLuz : MonoBehaviour {
 				//GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 2 && !isActiveDebuf) {
+			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct/2 && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;
@@ -71,7 +73,7 @@ public class EvtLuz : MonoBehaviour {
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 4 && !isActiveDebuf) {
+			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct && !isActiveDebuf) {
 				Vector2 pos = player.transform.position;
 				Vector2 circ;
 				circ = Random.insideUnitCircle;

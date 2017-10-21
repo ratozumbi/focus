@@ -37,7 +37,7 @@ public class SensoryHUD : MonoBehaviour {
             case TypeBubbleSensory.Hearing:
                 sensory = hearing;
                 break;
-            case TypeBubbleSensory.Sould:
+            case TypeBubbleSensory.Soul:
                 sensory = sould;
                 break;
             default:

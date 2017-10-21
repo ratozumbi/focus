@@ -6,6 +6,8 @@ public class EvtVibra : MonoBehaviour {
 	public GameObject player;
 	public float timeWait = 1f;
 
+	public float distToAct = 3;
+
 	private float lastVibra = 0;
 
     private bool isActiveDebuf;
@@ -33,7 +35,7 @@ public class EvtVibra : MonoBehaviour {
             }
 
             lastVibra = Time.realtimeSinceStartup;
-			if (Vector3.Distance (transform.position, player.transform.position) < 1) {
+			if (Vector3.Distance (transform.position, player.transform.position) < distToAct/3) {
                 if (isActiveDebuf)
                     Inventory.instance.itemSlot[indexCurSlot].Removed();
 
@@ -41,12 +43,12 @@ public class EvtVibra : MonoBehaviour {
 				//GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 2 && !isActiveDebuf) {
+			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct/2 && !isActiveDebuf) {
 				Vibration.Vibrate (200);
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
-            } else if (Vector3.Distance (transform.position, player.transform.position) < 4 && !isActiveDebuf) {
+			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct && !isActiveDebuf) {
 				Vibration.Vibrate (50);
 				//GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
