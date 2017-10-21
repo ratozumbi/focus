@@ -28,10 +28,9 @@ public class EvtVibra : MonoBehaviour {
                 {
                     isActiveDebuf = false;
                     indexCurSlot = i;
+                    isActiveDebuf = true;
                     break;
                 }
-                else
-                    isActiveDebuf = true;
             }
 
             lastVibra = Time.realtimeSinceStartup;
