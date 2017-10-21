@@ -30,7 +30,7 @@ public class EvtLuzRuim : MonoBehaviour {
             int indexCurSlot = 0;
             for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
             {
-                if (!Inventory.instance.itemSlot[i].IsEmpty && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Blind)
+                if (Inventory.instance.itemSlot[i].itemInSlot != null && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Blind)
                 {
                     isActiveDebuf = false;
                     indexCurSlot = i;
