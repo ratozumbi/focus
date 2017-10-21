@@ -3,31 +3,34 @@ using System.Collections;
 
 public class Chiclete : MonoBehaviour
 {
-	[SerializeField] private int effectTime = 3;
+
 	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject chicleteTrap;
 
+	private float walkSpeedOriginal;
 
 	// Use this for initialization
 	void Start ()
 	{
 		player = GameObject.Find ("Player");
-		chicleteTrap = GameObject.Find ("chicleteTrap");
+		chicleteTrap = GameObject.Find ("chicletePlayer");
 
-		player.GetComponent<PlayerMovement> ().walkSpeed -= 3; 
+		walkSpeedOriginal = player.GetComponent<PlayerMovement> ().walkSpeed; 
+		player.GetComponent<PlayerMovement> ().walkSpeed = 1;
 
-		chicleteTrap.SetActive (true);
+		chicleteTrap.GetComponent<SpriteRenderer>().enabled = true;
 
 
-		Invoke("EndEffect", effectTime);
+		Invoke("EndEffect", 6);
 	}
 		
 
 	void  EndEffect()
 	{
-		player.GetComponent<PlayerMovement> ().walkSpeed += 3;
+		player.GetComponent<PlayerMovement> ().walkSpeed = walkSpeedOriginal;
 
-		chicleteTrap.SetActive (false);
+		chicleteTrap.GetComponent<SpriteRenderer>().enabled = false;
+
 	}
 
 
