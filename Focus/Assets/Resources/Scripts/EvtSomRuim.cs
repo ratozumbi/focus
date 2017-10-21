@@ -39,10 +39,9 @@ public class EvtSomRuim : MonoBehaviour {
                 {
                     isActiveDebuf = false;
                     indexCurSlot = i;
+                    isActiveDebuf = true;
                     break;
                 }
-                else
-                    isActiveDebuf = true;
             }
 
 			if (Vector3.Distance(transform.position, player.transform.position) < distToAct/3)

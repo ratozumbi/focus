@@ -33,15 +33,18 @@ public class EvtLuz : MonoBehaviour {
                     Debug.Log("Item Debuf: " + Inventory.instance.itemSlot[i].itemInSlot.debuf);
                     isActiveDebuf = false;
                     indexCurSlot = i;
+
+                    isActiveDebuf = true;
                     break;
                 }
-                else
-                    isActiveDebuf = true;
             }
 
 			if (Vector3.Distance (transform.position, player.transform.position) < distToAct/3) {
                 if (isActiveDebuf)
+                {
+                    Debug.Log("Destroy Debug");
                     Inventory.instance.itemSlot[indexCurSlot].Removed();
+                }
 
                 Vector2 pos = player.transform.position;
 				Vector2 circ;
