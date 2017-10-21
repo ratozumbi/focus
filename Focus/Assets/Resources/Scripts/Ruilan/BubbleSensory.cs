@@ -14,4 +14,4 @@ public class BubbleSensory : MonoBehaviour {
     }
 }
 
-public enum TypeBubbleSensory { Adrenaline, Feel, Hearing, Sould }
+public enum TypeBubbleSensory { Adrenaline, Feel, Hearing, Soul }

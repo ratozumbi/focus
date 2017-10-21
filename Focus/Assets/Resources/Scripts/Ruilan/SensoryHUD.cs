@@ -37,7 +37,7 @@ public class SensoryHUD : MonoBehaviour {
             case TypeBubbleSensory.Hearing:
                 sensory = hearing;
                 break;
-            case TypeBubbleSensory.Sould:
+            case TypeBubbleSensory.Soul:
                 sensory = sould;
                 break;
             default:
@@ -63,7 +63,7 @@ public class SensoryHUD : MonoBehaviour {
 
     private void ActiveNextStack(Sensory sensory)
     {
-        for (int i = 0; i < sensory.stack.Length; i++)
+        for (int i = 0; i <= sensory.stack.Length; i++)
         {
             if (!sensory.stack[i].IsActived)
             {

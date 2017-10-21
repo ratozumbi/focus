@@ -39,7 +39,6 @@ public class Inventory : MonoBehaviour {
         int indexSlot = (int)equipment.typeEquipment;
 
         equipmentsSlots[indexSlot].Add(equipment);
-        Debug.Log("Equipment Name: " + equipmentsSlots[indexSlot].name);
         equipmentInGame[indexSlot].sprite = equipment.spriteInGame;
     }
 }

@@ -6,7 +6,14 @@ public class PickUpEquipment : Interactable
 {
     [SerializeField] private Equipment equipment;
 
+    private Inventory inventory;
+
     private static Equipment auxEqui;
+
+    // Use this for initialization
+    void Awake () {
+        inventory = FindObjectOfType<Inventory>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,7 +26,7 @@ public class PickUpEquipment : Interactable
 
         auxEqui = Inventory.instance.GetEquipment(equipment.typeEquipment);
 
-        Inventory.instance.AddEquipment(equipment);
+        inventory.AddEquipment(equipment);
 
         ChangeEquipment();
 
