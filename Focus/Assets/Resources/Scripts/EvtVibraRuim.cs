@@ -33,10 +33,9 @@ public class EvtVibraRuim : MonoBehaviour {
                     Debug.Log("Item Debuf: " + Inventory.instance.itemSlot[i].itemInSlot.debuf);
                     isActiveDebuf = false;
                     indexCurSlot = i;
+                    isActiveDebuf = true;
                     break;
                 }
-                else
-                    isActiveDebuf = true;
             }
 
             lastVibra = Time.realtimeSinceStartup;
