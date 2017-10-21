@@ -75,7 +75,8 @@ public class AbsorbFocus : MonoBehaviour {
                     bubbleAbsorb.SetActive(false);
 					isAbsorb = false;
 					setInactive = false;
-                    if(itemDrop != null)
+
+                    if (itemDrop != null)
                         Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
                 }
             }
