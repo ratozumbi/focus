@@ -66,6 +66,8 @@ public class Mission : MonoBehaviour {
                 SensoryHUD.instance.AddScore(mission.scoreEarned, mission.typeSensory);
 
                 Instantiate(mission.itemDrop, mission.posDropItem.position, mission.posDropItem.rotation, transform);
+
+                FinishGame.instance.ActiveFinishGameEffect();
                 break;
             }
         }

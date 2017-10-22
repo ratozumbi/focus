@@ -27,23 +27,23 @@ public class EvtSomRuim : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        int indexCurSlot = 0;
+        for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
+        {
+            if (Inventory.instance.itemSlot[i].itemInSlot != null && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Deaf)
+            {
+                isActiveDebuf = false;
+                indexCurSlot = i;
+                isActiveDebuf = true;
+                mySom.mute = true;
+                break;
+            }
+        }
+
         if (Time.realtimeSinceStartup - lastVibra > timeWait)
         {
 
             lastVibra = Time.realtimeSinceStartup;
-
-            int indexCurSlot = 0;
-            for (int i = 0; i < Inventory.instance.itemSlot.Length; i++)
-            {
-				if (Inventory.instance.itemSlot[i].itemInSlot != null && Inventory.instance.itemSlot[i].itemInSlot.debuf == Debuf.Deaf)
-                {
-                    isActiveDebuf = false;
-                    indexCurSlot = i;
-                    isActiveDebuf = true;
-                    mySom.mute = true;
-                    break;
-                }
-            }
 
 			if (Vector3.Distance(transform.position, player.transform.position) < distToAct/3)
             {
