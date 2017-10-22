@@ -12,6 +12,7 @@ public class Door : MonoBehaviour {
     private void Open()
     {
 		GetComponent<PolygonCollider2D> ().enabled = false;
+        isOpen = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
