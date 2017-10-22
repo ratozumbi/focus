@@ -48,7 +48,7 @@ public class FinishGame : MonoBehaviour
                 ++numEquipment;
             }
         }
-        if (numEquipment == Inventory.instance.equipmentsSlots.Length)
+        if (numEquipment == (Inventory.instance.equipmentsSlots.Length - 1))
         {
             centro.SetActive(false);
             imgAudicao.SetActive(true);
