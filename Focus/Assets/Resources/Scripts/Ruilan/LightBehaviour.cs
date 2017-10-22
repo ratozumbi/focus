@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LightBehaviour : MonoBehaviour {
 
 	[SerializeField] private GameObject focusPosition;
+	[SerializeField] private GameObject webcamBackground;
 	[SerializeField] private Transform playerPosition;
 
 	[SerializeField] private Camera camera0;
@@ -50,6 +51,13 @@ public class LightBehaviour : MonoBehaviour {
 
         GameObject baseL = GameObject.Find("base.L");
         GameObject baseR = GameObject.Find("base.R");
+
+//		if (ScoreManager.Score / 10 > 4) {
+//			webcamBackground.SetActive (false);
+//		} else {
+//			webcamBackground.SetActive (true);
+//		}
+
 
 
         if (baseL.transform.localPosition.x - ScoreManager.Score / 10 < 4.0f && baseR.transform.localPosition.x + ScoreManager.Score / 10 > -4.0f)

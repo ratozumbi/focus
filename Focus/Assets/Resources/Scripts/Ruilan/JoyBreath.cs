@@ -11,7 +11,13 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
     private Vector3 inputVector;
 
 
-    [SerializeField] private Transform pointerSpawn;
+	[SerializeField] private Transform pointerSpawn;
+
+
+	[SerializeField] private GameObject camBackground;
+
+	[SerializeField] private GameObject headRespira;
+	private Image headRespiraImg;
 
     [SerializeField]
     private GameObject spawn;
@@ -24,6 +30,10 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
 
     private void Start()
     {
+
+		headRespiraImg = headRespira.GetComponent<Image> ();
+		headRespiraImg.enabled = true;
+
         bgImg = GetComponent<Image>();
         joyImg = transform.GetChild(0).GetComponent<Image>();
 
@@ -47,14 +57,24 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
             Debug.Log("Spawn");
         }
 
-        if (ScoreManager.Score > 1.0f)
+		//scala a cabeça
+		headRespira.transform.localScale = new Vector3(
+			1 + headRespira.transform.localScale.x * inputVector.z / 8,
+			1 + headRespira.transform.localScale.y * inputVector.z / 8,
+			1 + headRespira.transform.localScale.z * inputVector.z / 8);
+
+        if (ScoreManager.Score > 2.5f)
         {
             GameObject joyBreath = GameObject.FindObjectOfType<JoyBreath>().gameObject;
             joyBreath.SetActive(false);
 
             GameObject joyStick = GameObject.Find("Canvas").GetComponentInChildren<VirtualJoystick>(true).gameObject;
             joyStick.SetActive(true);
-            
+
+			headRespiraImg.enabled = false;
+
+			camBackground.SetActive (false);
+
             timer.SetActive(true);
         }
 

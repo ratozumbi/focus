@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FinishGame : MonoBehaviour
 {
-	[SerializeField] private GameObject image;
+	[SerializeField] private GameObject imageEndGame;
 	[SerializeField] private GameObject centro;
 
     [Space]
@@ -58,7 +58,7 @@ public class FinishGame : MonoBehaviour
 
     private void ResetScene()
     {
-        image.SetActive(true);
+		imageEndGame.SetActive(true);
         Invoke("LoadScene", 3f);
     }
 
