@@ -38,6 +38,7 @@ public class AbsorbFocus : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Debug.Log(scoreLost);
         if (isAbsorb)
         {
             float step = speed * Time.deltaTime;
@@ -51,17 +52,15 @@ public class AbsorbFocus : MonoBehaviour {
 
 				scoreLost += absorbScore;
 
-                if (scoreLost > 1)
+                if (scoreLost == 1f)
                 {
                     GetComponent<SpriteRenderer>().sprite = img0;
                 }
-
-                if (scoreLost > 2)
+                else if (scoreLost == 2f)
                 {
                     GetComponent<SpriteRenderer>().sprite = img1;
                 }
-
-                if (scoreLost > 3)
+                else if (scoreLost >= 3f)
                 {
                     GetComponent<SpriteRenderer>().sprite = img2;
                     if (itemDrop != null)
@@ -83,7 +82,6 @@ public class AbsorbFocus : MonoBehaviour {
         {
             transBubble.position = focus.position;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -101,7 +99,7 @@ public class AbsorbFocus : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             //bubbleAbsorb.SetActive(false);
-            //isAbsorb = false;
+            isAbsorb = false;
 			setInactive = true;
         }
 
