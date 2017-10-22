@@ -76,7 +76,7 @@ public class AbsorbFocus : MonoBehaviour {
 					isAbsorb = false;
 					setInactive = false;
 
-                    if (itemDrop != null)
+                    if (itemDrop != null && scoreLost >= 3)
                         Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
                 }
             }
