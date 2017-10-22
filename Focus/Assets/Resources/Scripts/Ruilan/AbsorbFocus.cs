@@ -64,7 +64,8 @@ public class AbsorbFocus : MonoBehaviour {
                 if (scoreLost > 3)
                 {
                     GetComponent<SpriteRenderer>().sprite = img2;
-
+                    if (itemDrop != null)
+                        Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
                     setInactive = true;
                 }
 
@@ -72,9 +73,6 @@ public class AbsorbFocus : MonoBehaviour {
                     bubbleAbsorb.SetActive(false);
 					isAbsorb = false;
 					setInactive = false;
-
-                    if (itemDrop != null && !(scoreLost < 3))
-                        Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
                 }
             }
         }
