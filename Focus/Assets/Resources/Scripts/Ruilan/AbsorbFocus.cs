@@ -65,7 +65,10 @@ public class AbsorbFocus : MonoBehaviour {
                 {
                     GetComponent<SpriteRenderer>().sprite = img2;
                     if (itemDrop != null)
+                    {
                         Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
+                        itemDrop = null;
+                    }
                     setInactive = true;
                 }
 
