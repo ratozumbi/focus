@@ -20,6 +20,7 @@ public struct DescriptionMission
 public class Mission : MonoBehaviour {
 
     [SerializeField] private SpriteRenderer spriteBubble;
+	[SerializeField] private Sprite sprtDone;
     [SerializeField] private TextMesh textBubble;
 
     [SerializeField] private DescriptionMission[] missions;
@@ -62,6 +63,8 @@ public class Mission : MonoBehaviour {
                 mission.inProgress = false;
                 mission.isCompleted = true;
 
+				spriteBubble.sprite = sprtDone;
+
                 inventoryPlayer.itemSlot[i].Removed();
                 SensoryHUD.instance.AddScore(mission.scoreEarned, mission.typeSensory);
 
@@ -86,6 +89,6 @@ public class Mission : MonoBehaviour {
             yield return new WaitForSeconds(5);
         }
 
-        spriteBubble.gameObject.SetActive(false);
+       // spriteBubble.gameObject.SetActive(false);
     }
 }
