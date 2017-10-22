@@ -36,6 +36,7 @@ public class EvtSom : MonoBehaviour {
                     isActiveDebuf = false;
                     indexCurSlot = i;
                     isActiveDebuf = true;
+                    mySom.mute = true;
                     break;
                 }
             }
@@ -43,16 +44,18 @@ public class EvtSom : MonoBehaviour {
 			if (Vector3.Distance (transform.position, player.transform.position) < distToAct/3) {
                 if (isActiveDebuf)
                     Inventory.instance.itemSlot[indexCurSlot].Removed();
-
+                mySom.mute = false;
                 //GetComponent<SpriteRenderer> ().enabled = true;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = true;
 			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct/2 && !isActiveDebuf) {
-				//GetComponent<SpriteRenderer> ().enabled = false;
+                mySom.mute = false;
+                //GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
 			} else if (Vector3.Distance (transform.position, player.transform.position) < distToAct && !isActiveDebuf) {
-				//GetComponent<SpriteRenderer> ().enabled = false;
+                mySom.mute = false;
+                //GetComponent<SpriteRenderer> ().enabled = false;
                 SpawnOne spawn = GetComponent<SpawnOne>();
                 spawn.enabled = false;
             }
