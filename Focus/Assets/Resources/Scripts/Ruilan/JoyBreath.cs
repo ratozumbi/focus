@@ -17,6 +17,7 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
 	[SerializeField] private GameObject camBackground;
 
 	[SerializeField] private GameObject headRespira;
+	[SerializeField] private Image tutorialRespira;
 	private Image headRespiraImg;
 
     [SerializeField]
@@ -33,6 +34,8 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
 
 		headRespiraImg = headRespira.GetComponent<Image> ();
 		headRespiraImg.enabled = true;
+
+		tutorialRespira.enabled = true;
 
         bgImg = GetComponent<Image>();
         joyImg = transform.GetChild(0).GetComponent<Image>();
@@ -72,6 +75,7 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
             joyStick.SetActive(true);
 
 			headRespiraImg.enabled = false;
+			tutorialRespira.enabled = false;
 
 			camBackground.SetActive (false);
 
