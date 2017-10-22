@@ -38,26 +38,6 @@ public class AbsorbFocus : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-
-		if(scoreLost > 1)
-		{
-			GetComponent<SpriteRenderer>().sprite = img0;
-        }
-
-		if(scoreLost > 2)
-		{
-			GetComponent<SpriteRenderer>().sprite = img1;
-        }
-
-		if(scoreLost > 3)
-		{
-			GetComponent<SpriteRenderer>().sprite = img2;
-
-			setInactive = true;
-        }
-			
-
         if (isAbsorb)
         {
             float step = speed * Time.deltaTime;
@@ -71,7 +51,24 @@ public class AbsorbFocus : MonoBehaviour {
 
 				scoreLost += absorbScore;
 
-				if (setInactive) {
+                if (scoreLost > 1)
+                {
+                    GetComponent<SpriteRenderer>().sprite = img0;
+                }
+
+                if (scoreLost > 2)
+                {
+                    GetComponent<SpriteRenderer>().sprite = img1;
+                }
+
+                if (scoreLost > 3)
+                {
+                    GetComponent<SpriteRenderer>().sprite = img2;
+
+                    setInactive = true;
+                }
+
+                if (setInactive) {
                     bubbleAbsorb.SetActive(false);
 					isAbsorb = false;
 					setInactive = false;
