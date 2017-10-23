@@ -59,7 +59,7 @@ public class FinishGame : MonoBehaviour
     private void ResetScene()
     {
 		imageEndGame.SetActive(true);
-        Invoke("LoadScene", 3f);
+        Invoke("LoadScene", 7f);
     }
 
     private void LoadScene()
