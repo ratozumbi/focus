@@ -6,7 +6,7 @@ public class EvtVibra : MonoBehaviour {
 	public GameObject player;
 	public float timeWait = 1f;
 
-	public float distToAct = 3;
+	public float distToAct = 4;
 
 	private float lastVibra = 0;
 

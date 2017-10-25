@@ -11,7 +11,7 @@ public class EvtLuzRuim : MonoBehaviour {
 	private int luzCnt = 0;
 	private float lastVibra = 0;
 
-	public float distToAct = 3;
+	public float distToAct = 4;
 
     public bool isActiveDebuf;
 

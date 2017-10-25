@@ -8,7 +8,7 @@ public class EvtLuz : MonoBehaviour {
 
 	private float lastVibra = 0;
 
-	public float distToAct = 3;
+	public float distToAct = 4;
 
     public bool isActiveDebuf;
     // Use this for initialization

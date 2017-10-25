@@ -10,7 +10,7 @@ public class EvtSomRuim : MonoBehaviour {
     public float timeWait = 1f;
 
 
-	public float distToAct = 3;
+	public float distToAct = 4;
 
     private float lastVibra = 0;
 

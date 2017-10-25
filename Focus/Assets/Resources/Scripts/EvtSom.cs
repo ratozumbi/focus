@@ -10,7 +10,7 @@ public class EvtSom : MonoBehaviour {
 
 	private float lastVibra = 0;
 
-	public float distToAct = 3;
+	public float distToAct = 4;
 
     private bool isActiveDebuf;
 
