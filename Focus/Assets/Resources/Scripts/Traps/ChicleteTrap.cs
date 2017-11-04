@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Chiclete : MonoBehaviour
+public class ChicleteTrap : MonoBehaviour
 {
 
 	[SerializeField] private GameObject player;

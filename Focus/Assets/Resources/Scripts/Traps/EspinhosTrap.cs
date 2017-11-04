@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Espinhos : MonoBehaviour
+public class EspinhosTrap : MonoBehaviour
 {
 
 	[SerializeField] private GameObject objTrap;
