@@ -11,8 +11,9 @@ public class LightBehaviour : MonoBehaviour {
 
 	[SerializeField] private Camera camera0;
 
-    [Space]
-    [SerializeField] private Transform baseLight;
+	[Space]
+	[SerializeField] private Transform circle;
+	[SerializeField] private Transform baseLight;
     [SerializeField] private Transform topLight;
 
     [Space]
@@ -50,7 +51,8 @@ public class LightBehaviour : MonoBehaviour {
         //baseLight.transform.position = new Vector3(baseLight.transform.position.x, baseLight.transform.position.y - ScoreManager.Score/100, baseLight.transform.position.z);
 
         GameObject baseL = GameObject.Find("base.L");
-        GameObject baseR = GameObject.Find("base.R");
+		GameObject baseR = GameObject.Find("base.R");
+		circle = GameObject.Find("LuzCircle").GetComponent<Transform>();
 
 //		if (ScoreManager.Score / 10 > 4) {
 //			webcamBackground.SetActive (false);
@@ -63,8 +65,7 @@ public class LightBehaviour : MonoBehaviour {
         if (baseL.transform.localPosition.x - ScoreManager.Score / 10 < 4.0f && baseR.transform.localPosition.x + ScoreManager.Score / 10 > -4.0f)
         {
             baseL.transform.position = new Vector3(baseL.transform.position.x - ScoreManager.Score / 10, baseL.transform.position.y, baseL.transform.position.z);
-            baseR.transform.position = new Vector3(baseR.transform.position.x + ScoreManager.Score / 10, baseR.transform.position.y, baseR.transform.position.z);
-            
+            baseR.transform.position = new Vector3(baseR.transform.position.x + ScoreManager.Score / 10, baseR.transform.position.y, baseR.transform.position.z);            
         }
 
         if (baseL.transform.localPosition.x > 4.0f && baseR.transform.localPosition.x < -4.0f)
@@ -78,6 +79,9 @@ public class LightBehaviour : MonoBehaviour {
             baseL.transform.position = new Vector3(playerPosition.position.x, baseL.transform.position.y, baseL.transform.position.z);
             baseR.transform.position = new Vector3(playerPosition.position.x, baseR.transform.position.y, baseR.transform.position.z);
         }
+
+
+		circle.transform.localScale = new Vector3 (baseL.transform.position.x * 100, 1, baseL.transform.position.x * 100); 
 
     }
 }
