@@ -14,9 +14,14 @@ public class PsicoControl : MonoBehaviour {
 		
 	}
 
-	public void NotifyAll()
+	public void NotifyAll(bool ativa)
 	{
-		
+		if (ativa) {
+			BroadcastMessage ("ActivatePsico");
+		} else {
+			BroadcastMessage ("DeactivatePsico");
+		}
+
 	}
 
 }

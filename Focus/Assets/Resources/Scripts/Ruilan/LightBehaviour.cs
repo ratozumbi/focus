@@ -24,6 +24,7 @@ public class LightBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         scaleLightInit = light.localScale.y;
+		circle = GameObject.Find("LuzCircle").GetComponent<Transform>();
     }
 	
     private void Update()
@@ -52,7 +53,7 @@ public class LightBehaviour : MonoBehaviour {
 
         GameObject baseL = GameObject.Find("base.L");
 		GameObject baseR = GameObject.Find("base.R");
-		circle = GameObject.Find("LuzCircle").GetComponent<Transform>();
+
 
 //		if (ScoreManager.Score / 10 > 4) {
 //			webcamBackground.SetActive (false);
