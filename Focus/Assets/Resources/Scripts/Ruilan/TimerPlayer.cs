@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class TimerPlayer : MonoBehaviour
 {
-
-    [SerializeField]
-    private int secMax;
-    private float secCurrent;
+	public int secMax;
+    public float secCurrent;
 
     public bool ActiveTimer { get; set; }
 
@@ -39,7 +37,7 @@ public class TimerPlayer : MonoBehaviour
         secCurrent = 0.0f;
     }
 
-    private void CalculatePercentage(int secMax, float secCurr)
+    public void CalculatePercentage(int secMax, float secCurr)
     {
         imageTime.fillAmount = secCurr / secMax;
     }
