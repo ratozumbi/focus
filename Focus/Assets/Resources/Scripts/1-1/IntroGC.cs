@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class IntroGC : MonoBehaviour {
 
     private GameObject logo;
-    private GameObject tilt;
+	private GameObject tilt;
+	public  GameObject equilibrio;
 
     private int currEvtFase = 0;
 
@@ -58,8 +59,9 @@ public class IntroGC : MonoBehaviour {
                 }
                 break;
 
-            case 2:
+		case 2:
                 //surge tilt e barra
+			equilibrio.SetActive(true);
                 if (Time.time - timer > 1f)
                 {
                     Image[] vecBarra = new Image[8];
