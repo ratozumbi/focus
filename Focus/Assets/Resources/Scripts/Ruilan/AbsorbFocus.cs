@@ -68,8 +68,14 @@ public class AbsorbFocus : MonoBehaviour {
                         Instantiate(itemDrop, posDropItem.position, posDropItem.rotation, transform);
                         itemDrop = null;
                     }
-                    setInactive = true;
-                }
+					setInactive = true;
+					transform.parent.gameObject.GetComponent<EvtLuz> ().enabled = false;
+					transform.parent.gameObject.GetComponent<EvtSom> ().enabled = false; 
+					transform.parent.gameObject.GetComponent<EvtVibra> ().enabled = false; 
+					transform.parent.gameObject.GetComponent<EvtLuzRuim> ().enabled = false;
+					transform.parent.gameObject.GetComponent<EvtSomRuim> ().enabled = false; 
+					transform.parent.gameObject.GetComponent<EvtVibraRuim> ().enabled = false; 
+				}
 
                 if (setInactive) {
                     bubbleAbsorb.SetActive(false);
