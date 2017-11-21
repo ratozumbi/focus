@@ -69,12 +69,19 @@ public class AbsorbFocus : MonoBehaviour {
                         itemDrop = null;
                     }
 					setInactive = true;
-					transform.parent.gameObject.GetComponent<EvtLuz> ().enabled = false;
-					transform.parent.gameObject.GetComponent<EvtSom> ().enabled = false; 
-					transform.parent.gameObject.GetComponent<EvtVibra> ().enabled = false; 
-					transform.parent.gameObject.GetComponent<EvtLuzRuim> ().enabled = false;
-					transform.parent.gameObject.GetComponent<EvtSomRuim> ().enabled = false; 
-					transform.parent.gameObject.GetComponent<EvtVibraRuim> ().enabled = false; 
+
+					try{
+						transform.parent.gameObject.GetComponent<EvtLuz> ().enabled = false;
+						transform.parent.gameObject.GetComponent<EvtSom> ().enabled = false; 
+						transform.parent.gameObject.GetComponent<EvtVibra> ().enabled = false; 
+						transform.parent.gameObject.GetComponent<EvtLuzRuim> ().enabled = false;
+						transform.parent.gameObject.GetComponent<EvtSomRuim> ().enabled = false; 
+						transform.parent.gameObject.GetComponent<EvtVibraRuim> ().enabled = false; 
+					}
+					catch(System.Exception e)
+					{
+						//Debug.LogException (e);
+					}
 				}
 
                 if (setInactive) {

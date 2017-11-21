@@ -29,10 +29,6 @@ public class EspinhosTrap : MonoBehaviour
 			Vector3 objPos;
 			objPos = Random.insideUnitCircle * radius;
 
-			//while (objPos.x < 1 || objPos.y < 1) {
-			//	objPos = Random.insideUnitCircle * 4;
-			//}
-
 			objPos += player.transform.position;
 
 			GameObject espinho = Instantiate(objTrap, objPos, Quaternion.identity);
