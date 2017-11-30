@@ -4,38 +4,71 @@ using UnityEngine;
 
 public class SpawnRandomScene : MonoBehaviour {
 
-    [SerializeField] private Transform[] posMissionsHouse;
-    [SerializeField] private GameObject[] objMissionsHouse;
+    [SerializeField] private HouseSpawn[] spawnHouse;
     [Space]
-    [SerializeField] private Transform[] posPlants1;
-    [SerializeField] private GameObject[] objPlants1;
-    [Space]
-    [SerializeField] private Transform[] posPlants2;
-    [SerializeField] private GameObject[] objPlants2;
-    [Space]
-    [SerializeField] private Transform[] posPlants3;
-    [SerializeField] private GameObject[] objPlants3;
+    [SerializeField] private PlantsSpawn[] spawnPlants;
 
     private void Awake()
     {
         SpawnHouse();
+        SpawnPlants();
     }
 
     private void SpawnHouse()
     {
-        int ranIndex = Random.Range(0, objMissionsHouse.Length - 1);
-        for (int i = 0; i < posMissionsHouse.Length; i++)
+        int indexRandom;
+
+        for (int i = 0; i < spawnHouse.Length; i++)
         {
-            Instantiate(objMissionsHouse[ranIndex], posMissionsHouse[i]);
-            if (ranIndex == objMissionsHouse.Length - 1)
-                ranIndex = 0;
-            else
-                ranIndex++;
+            indexRandom = Random.Range(0, spawnHouse[i].house.Length - 1);
+            GameObject houseObj = Instantiate(spawnHouse[i].house[indexRandom], spawnHouse[i].pos);
+
+            int itemIndex = Random.Range(0, spawnHouse[i].item.Length - 1);
+
+            for (int x = 0; x < houseObj.GetComponent<Mission>().missions.Length; x++)
+            {
+                houseObj.GetComponent<Mission>().missions[x].itemDrop = spawnHouse[i].item[itemIndex];
+            }
+            
         }
     }
 
     private void SpawnPlants()
     {
+        for (int i = 0; i < spawnPlants.Length; i++)
+        {
+            int randomPos = Random.Range(0, spawnPlants[i].pos.Length - 1);
+            int randomPlant = Random.Range(0, spawnPlants[i].plants.Length - 1);
 
+            for (int x = 0; x < spawnPlants[i].pos.Length; x++)
+            {
+                Instantiate(spawnPlants[i].plants[randomPlant], spawnPlants[i].pos[randomPos]);
+
+                if (randomPlant == spawnPlants[i].plants.Length - 1)
+                    randomPlant = 0;
+                else
+                    randomPlant++;
+
+                if (randomPos == spawnPlants[i].pos.Length - 1)
+                    randomPos = 0;
+                else
+                    randomPos++;
+            }
+        }
     }
+}
+
+[System.Serializable]
+public class HouseSpawn
+{
+    public Transform pos;
+    public GameObject[] house;
+    public GameObject[] item;
+}
+
+[System.Serializable]
+public class PlantsSpawn
+{
+    public Transform[] pos;
+    public GameObject[] plants;
 }

@@ -23,7 +23,7 @@ public class Mission : MonoBehaviour {
 	[SerializeField] private Sprite sprtDone;
     [SerializeField] private TextMesh textBubble;
 
-    [SerializeField] private DescriptionMission[] missions;
+    public DescriptionMission[] missions;
 
     private Inventory inventoryPlayer;
 
