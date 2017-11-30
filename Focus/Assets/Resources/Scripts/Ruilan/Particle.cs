@@ -16,7 +16,6 @@ public class Particle : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("colision");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Focus"))
         {
             ReactionColisionParticle();
@@ -26,7 +25,6 @@ public class Particle : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("colision");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Focus"))
         {
             ReactionColisionParticle();
@@ -40,6 +38,5 @@ public class Particle : MonoBehaviour {
             ScoreManager.AddPointer(value);
         if(this.gameObject.tag == "ParticleBad")
             ScoreManager.SubPointer(value);
-        Debug.Log("Colision " + gameObject.name);
     }
 }

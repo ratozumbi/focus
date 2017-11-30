@@ -38,7 +38,6 @@ public class AbsorbFocus : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(scoreLost);
         if (isAbsorb)
         {
             float step = speed * Time.deltaTime;

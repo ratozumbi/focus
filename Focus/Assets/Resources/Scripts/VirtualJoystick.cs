@@ -64,4 +64,10 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 			joyImg.rectTransform.anchoredPosition = new Vector3 (inputVector.x * bgImg.rectTransform.sizeDelta.x / 3, inputVector.z * bgImg.rectTransform.sizeDelta.y / 3);
         }
 	}
+
+    private void OnDisable()
+    {
+        inputVector = Vector3.zero;
+        joyImg.rectTransform.anchoredPosition = Vector3.zero;
+    }
 }

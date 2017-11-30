@@ -50,14 +50,12 @@ public class JoyBreath : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
             lastPosBreath = false;
             int posRandom = Random.Range(0, posSpawns.Length);
             Instantiate(spawn, posSpawns[posRandom]);
-            Debug.Log("Spawn");
         }
         else if(!lastPosBreath && inputVector.z > 0.8f)
         {
             lastPosBreath = true;
             int posRandom = Random.Range(0, posSpawns.Length);
             Instantiate(spawn, posSpawns[posRandom]);
-            Debug.Log("Spawn");
         }
 
 		//scala a cabeça

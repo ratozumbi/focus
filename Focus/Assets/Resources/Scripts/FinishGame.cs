@@ -20,7 +20,6 @@ public class FinishGame : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(Inventory.instance.equipmentsSlots.Length);
         if (collision.gameObject.tag == "Player")
         {
             int numEquipment = 0;
