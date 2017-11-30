@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ElevatorExit : MonoBehaviour {
 
+    [SerializeField] private int velocity;
     [SerializeField] private Transform[] pos;
     [SerializeField] private GameObject colissions;
     [SerializeField] private VirtualJoystick joystick;
@@ -39,7 +40,7 @@ public class ElevatorExit : MonoBehaviour {
     {
         if (inElevator)
         {
-            player.position = Vector3.Lerp(player.position, pos[nextPosIndex].position, Time.deltaTime);
+            player.position = Vector3.Lerp(player.position, pos[nextPosIndex].position, Time.deltaTime * velocity);
 
             Debug.Log((player.position.x.ToString("n0") + " === " + pos[nextPosIndex].position.x.ToString("n0")));
             if (player.position.x.ToString("n0") == pos[nextPosIndex].position.x.ToString("n0") && player.position.y.ToString("n0") == pos[nextPosIndex].position.y.ToString("n0"))

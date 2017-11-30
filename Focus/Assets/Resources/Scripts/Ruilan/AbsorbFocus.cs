@@ -29,6 +29,7 @@ public class AbsorbFocus : MonoBehaviour {
     void Awake () {
         transBubble = bubbleAbsorb.transform;
         score = FindObjectOfType<ScoreManager>();
+        focus = GameObject.Find("spark").transform;
     }
 
     private void Start()
