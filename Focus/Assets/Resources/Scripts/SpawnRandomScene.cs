@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnRandomScene : MonoBehaviour {
 
-    [SerializeField] private HouseSpawn[] spawnHouse;
+    [SerializeField] private Transform[] posHouse;
+    [SerializeField] private GameObject[] objHouse;
+    [SerializeField] private GameObject[] objItem;
     [Space]
     [SerializeField] private PlantsSpawn[] spawnPlants;
 
@@ -16,20 +18,23 @@ public class SpawnRandomScene : MonoBehaviour {
 
     private void SpawnHouse()
     {
-        int indexRandom;
-
-        for (int i = 0; i < spawnHouse.Length; i++)
+        int indexHouse = Random.Range(0, objHouse.Length -1);
+        for (int i = 0; i < posHouse.Length; i++)
         {
-            indexRandom = Random.Range(0, spawnHouse[i].house.Length - 1);
-            GameObject houseObj = Instantiate(spawnHouse[i].house[indexRandom], spawnHouse[i].pos);
+            GameObject house = Instantiate(objHouse[indexHouse], posHouse[i]);
 
-            int itemIndex = Random.Range(0, spawnHouse[i].item.Length - 1);
+            indexHouse = (indexHouse == objHouse.Length - 1) ? 0 : ++indexHouse;
 
-            for (int x = 0; x < houseObj.GetComponent<Mission>().missions.Length; x++)
+            DescriptionMission[] mission = house.GetComponent<Mission>().missions;
+            int ranItemIndex;
+
+            for (int x = 0; x < mission.Length; x++)
             {
-                houseObj.GetComponent<Mission>().missions[x].itemDrop = spawnHouse[i].item[itemIndex];
+                ranItemIndex = Random.Range(0, objItem.Length - 1);
+                mission[x].itemDrop = objItem[ranItemIndex];
             }
-            
+
+            house.GetComponent<Mission>().missions = mission;
         }
     }
 
@@ -56,14 +61,6 @@ public class SpawnRandomScene : MonoBehaviour {
             }
         }
     }
-}
-
-[System.Serializable]
-public class HouseSpawn
-{
-    public Transform pos;
-    public GameObject[] house;
-    public GameObject[] item;
 }
 
 [System.Serializable]
