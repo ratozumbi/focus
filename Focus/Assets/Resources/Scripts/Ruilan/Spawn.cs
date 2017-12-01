@@ -39,8 +39,8 @@ public abstract class Spawn : MonoBehaviour
 
     private void Instantiateparticle()
     {
-        int iFile = Random.Range(0, fileSpawn.Length);
-        int iPos = Random.Range(0, posSpwans.Length);
+        int iFile = Random.Range(0, fileSpawn.Length -1);
+        int iPos = Random.Range(0, posSpwans.Length -1);
 
         filesSpawn.Add(Instantiate(fileSpawn[iFile], posSpwans[iPos]));
     }

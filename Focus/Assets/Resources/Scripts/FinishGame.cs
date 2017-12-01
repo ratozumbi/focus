@@ -30,7 +30,7 @@ public class FinishGame : MonoBehaviour
                     ++numEquipment;
                 }
             }
-            if(numEquipment == Inventory.instance.equipmentsSlots.Length)
+            if(numEquipment == Inventory.instance.equipmentsSlots.Length-1)
             {
                 ResetScene();
             }
